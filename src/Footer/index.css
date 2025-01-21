@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap');
+
+.footer-all {
+    height: max-content;
+    width: 100vw;
+    background-color: black;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.footer-main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 4rem 4rem;
+    padding-top: 6rem;
+}
+
+.footer-main ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 0.8rem;
+}
+
+.footer-main ul .heading {
+    font-size: 1.25rem;
+    font-weight: bolder;
+    margin-bottom: 0.5rem;
+}
+
+.footer-main .footer-logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.footer-main .footer-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 5rem;
+}
+
+.footer-main .footer-branches {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1rem;
+    text-align: start;
+}
+
+hr {
+    width:75%;
+    margin: auto;
+}
+
+.footer-bottom {
+    padding: 2rem 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+}
+
+.footer-bottom .social-media-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}

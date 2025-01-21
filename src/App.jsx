@@ -4,21 +4,21 @@ import viteLogo from '/vite.svg'
 import tsLogo from './assets/ts_logo.png'
 import './App.css'
 
+import Navigation from './Navigation/index.jsx'
+import Home from './Home/index.jsx'
+import Footer from './Footer/index.jsx'
+
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <>
-      <div>
-        <a href="https://themesoft.com" target="_blank">
-          <img src={tsLogo} className="logo" alt="ts logo" />
-        </a>
-      </div>
-      <h1>A Super Experience Is on the Way!</h1>
-      <p className="read-the-docs">
-      Thank you for visiting themesoft. We’re hard at work crafting a powerful new website that’s set to launch soon. Stay tuned for updates—your next-level digital experience is just around the corner!
-      </p>
-    </>
+    <div className="App
+    flex flex-col items-start justify-start pt-2 h-full w-full
+    ">
+      <Navigation />
+      <Home />
+      <Footer />
+    </div>
   )
 }
 
