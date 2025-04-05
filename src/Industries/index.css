@@ -449,34 +449,80 @@
   background: linear-gradient(90deg, rgba(124, 58, 237, 0.8), transparent);
   opacity: 0;
   pointer-events: none;
+  animation: none !important;
+  top: 0;
+  right: 0;
 }
 
-.industry-card:hover .meteor:nth-child(1) {
-  top: 20%;
-  right: -10%;
-  animation: meteorShower 1.5s linear infinite;
-  animation-delay: 0s;
+/* Desktop hover animations */
+@media (min-width: 769px) {
+  .industry-card:hover .meteor {
+    opacity: 0;
+  }
+
+  .industry-card:hover .meteor:nth-child(1) {
+    top: 20%;
+    right: -10%;
+    animation: meteorShower 1.5s linear !important;
+    animation-delay: 0s;
+  }
+
+  .industry-card:hover .meteor:nth-child(2) {
+    top: 40%;
+    right: 20%;
+    animation: meteorShower 2s linear !important;
+    animation-delay: 0.4s;
+  }
+
+  .industry-card:hover .meteor:nth-child(3) {
+    top: 60%;
+    right: -20%;
+    animation: meteorShower 1.8s linear !important;
+    animation-delay: 0.8s;
+  }
+
+  .industry-card:hover .meteor:nth-child(4) {
+    top: 80%;
+    right: 10%;
+    animation: meteorShower 1.6s linear !important;
+    animation-delay: 0.2s;
+  }
 }
 
-.industry-card:hover .meteor:nth-child(2) {
-  top: 40%;
-  right: 20%;
-  animation: meteorShower 2s linear infinite;
-  animation-delay: 0.4s;
-}
+/* Mobile animations - only for cards in view */
+@media (max-width: 768px) {
+  .industry-card .meteor {
+    opacity: 0;
+    animation: none !important;
+  }
 
-.industry-card:hover .meteor:nth-child(3) {
-  top: 60%;
-  right: -20%;
-  animation: meteorShower 1.8s linear infinite;
-  animation-delay: 0.8s;
-}
+  .industry-card.in-view .meteor:nth-child(1) {
+    top: 20%;
+    right: -10%;
+    animation: meteorShower 1.5s linear infinite !important;
+    animation-delay: 0s;
+  }
 
-.industry-card:hover .meteor:nth-child(4) {
-  top: 80%;
-  right: 10%;
-  animation: meteorShower 1.6s linear infinite;
-  animation-delay: 0.2s;
+  .industry-card.in-view .meteor:nth-child(2) {
+    top: 40%;
+    right: 20%;
+    animation: meteorShower 2s linear infinite !important;
+    animation-delay: 0.4s;
+  }
+
+  .industry-card.in-view .meteor:nth-child(3) {
+    top: 60%;
+    right: -20%;
+    animation: meteorShower 1.8s linear infinite !important;
+    animation-delay: 0.8s;
+  }
+
+  .industry-card.in-view .meteor:nth-child(4) {
+    top: 80%;
+    right: 10%;
+    animation: meteorShower 1.6s linear infinite !important;
+    animation-delay: 0.2s;
+  }
 }
 
 @media (max-width: 1200px) {

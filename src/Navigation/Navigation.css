@@ -355,10 +355,6 @@ body.menu-open {
     background-color: #1f2937;
 }
 
-.navbar.scrolled .nav-link {
-    color: #1f2937;
-}
-
 .navbar.scrolled .nav-link:hover {
     color: #4f46e5;
 } 
