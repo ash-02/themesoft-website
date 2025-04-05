@@ -195,7 +195,6 @@ const Index = () => {
 
                     <div className="services-wheel relative">
                         <div className="services-list space-y-6">
-                            {/* AI Service */}
                             <div className="service-item group" data-service="ai">
                                 <div className="flex items-start space-x-8 p-6 bg-white/90 backdrop-blur-sm rounded-2xl transition-all duration-500 hover:bg-white">
                                     <div className="service-icon flex-shrink-0">
@@ -222,7 +221,6 @@ const Index = () => {
                                 </div>
                             </div>
 
-                            {/* Cyber Security */}
                             <div className="service-item group" data-service="security">
                                 <div className="flex items-start space-x-8 p-6 bg-white/90 backdrop-blur-sm rounded-2xl transition-all duration-500 hover:bg-white">
                                     <div className="service-icon flex-shrink-0">
@@ -249,7 +247,6 @@ const Index = () => {
                                 </div>
                             </div>
 
-                            {/* Cloud Services */}
                             <div className="service-item group" data-service="cloud">
                                 <div className="flex items-start space-x-8 p-6 bg-white/90 backdrop-blur-sm rounded-2xl transition-all duration-500 hover:bg-white">
                                     <div className="service-icon flex-shrink-0">
@@ -276,7 +273,6 @@ const Index = () => {
                                 </div>
                             </div>
 
-                            {/* Software Consulting */}
                             <div className="service-item group" data-service="consulting">
                                 <div className="flex items-start space-x-8 p-6 bg-white/90 backdrop-blur-sm rounded-2xl transition-all duration-500 hover:bg-white">
                                     <div className="service-icon flex-shrink-0">

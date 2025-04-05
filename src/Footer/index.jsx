@@ -1,95 +1,101 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./index.css";
 
 import tsLogo from "../assets/ts_logo.png";
 
-const index = () => {
+const Footer = () => {
   return (
-    <div className="footer-all">
+    <footer className="footer-all">
+      <div className="footer-gradient"></div>
       <div className="footer-main">
-        <div className="footer-logo">
-          <img src={tsLogo} alt="Tech Solutions" className="responsive-logo" />
+        <div className="footer-logo-section">
+          <img src={tsLogo} alt="ThemeSoft" className="responsive-logo" />
+          <p className="company-description">
+            Empowering businesses through innovative digital solutions and transformative technology services.
+          </p>
+          <div className="social-media-buttons">
+            <a href="#" aria-label="LinkedIn" className="social-link">
+              <i className="fab fa-linkedin-in"></i>
+            </a>
+            <a href="#" aria-label="Twitter" className="social-link">
+              <i className="fab fa-twitter"></i>
+            </a>
+            <a href="#" aria-label="Facebook" className="social-link">
+              <i className="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" aria-label="Instagram" className="social-link">
+              <i className="fab fa-instagram"></i>
+            </a>
+          </div>
         </div>
+
         <div className="footer-content">
-          <ul className="footer-column">
-            <li className="heading">Services</li>
-            <li>
-              <a href="#">Artificial Intelligence</a>
-            </li>
-            <li>
-              <a href="#">Cyber Security</a>
-            </li>
-            <li>
-              <a href="#">Cloud and Data Services</a>
-            </li>
-            <li>
-              <a href="#">Software Consulting</a>
-            </li>
-          </ul>
-          <ul className="footer-column">
-            <li className="heading">Corporate Overview</li>
-            <li>
-              <a href="#">About</a>
-            </li>
-            <li>
-              <a href="#">Careers</a>
-            </li>
-          </ul>
-          <ul className="footer-column">
-            <li className="heading">Support</li>
-            <li>
-              <a href="#">Contact</a>
-            </li>
-            <li>
-              <a href="#">Fraud Alert</a>
-            </li>
-          </ul>
-        </div>
-        <div className="footer-branches">
-          <ul className="footer-column">
-            <div className="branch-info">
-              <li
-                className="heading"
-                style={{
-                  marginBottom: "1rem",
-                }}
-              >
-                Home Branch
-              </li>
-              <li>
-                616 S Coppell RD Coppell, TX 75019 <br /> (972) 474-8787
-              </li>
-            </div>
-            <br />
-            <ul className="other-locations">
-              <li className="heading">Other Locations</li>
-              <li>Albany, NY</li>
-              <li>Colorado Springs, CO</li>
-              <li>San Ramon, CA</li>
+          <div className="footer-section">
+            <h3 className="footer-heading">Services</h3>
+            <ul className="footer-links">
+              <li><Link to="/workforce-solutions">Workforce Solutions</Link></li>
+              <li><Link to="/industries">Industries</Link></li>
+              <li><Link to="/ai-solutions">Artificial Intelligence</Link></li>
+              <li><Link to="/cyber-security">Cyber Security</Link></li>
+              <li><Link to="/cloud-services">Cloud Services</Link></li>
             </ul>
-          </ul>
+          </div>
+
+          <div className="footer-section">
+            <h3 className="footer-heading">Company</h3>
+            <ul className="footer-links">
+              <li><Link to="/about">About Us</Link></li>
+              <li><Link to="/careers">Careers</Link></li>
+              <li><Link to="/contact">Contact</Link></li>
+              <li><Link to="/blog">Blog</Link></li>
+            </ul>
+          </div>
+
+          <div className="footer-section">
+            <h3 className="footer-heading">Legal</h3>
+            <ul className="footer-links">
+              <li><Link to="/privacy">Privacy Policy</Link></li>
+              <li><Link to="/terms">Terms of Service</Link></li>
+              <li><Link to="/security">Security</Link></li>
+              <li><Link to="/compliance">Compliance</Link></li>
+            </ul>
+          </div>
+
+          <div className="footer-section contact-section">
+            <h3 className="footer-heading">Contact Us</h3>
+            <div className="contact-info">
+              <p className="address">
+                <i className="fas fa-map-marker-alt"></i>
+                616 S Coppell RD Coppell, TX 75019
+              </p>
+              <p className="phone">
+                <i className="fas fa-phone"></i>
+                (972) 474-8787
+              </p>
+              <p className="email">
+                <i className="fas fa-envelope"></i>
+                info@themesoft.com
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-      <hr />
+
       <div className="footer-bottom">
-        <p>&copy; 2025 Themesoft Inc. All rights reserved.</p>
-        <div className="social-media-buttons">
-            <a href="#" aria-label="Facebook">
-                <i className="fab fa-facebook-f"></i>
-            </a>
-            <a href="#" aria-label="Instagram">
-                <i className="fab fa-instagram"></i>
-            </a>
-            <a href="#" aria-label="Twitter">
-                <i className="fab fa-twitter"></i>
-            </a>
-            <a href="#" aria-label="LinkedIn">
-                <i className="fab fa-linkedin-in"></i>
-            </a>
+        <div className="footer-bottom-content">
+          <p className="copyright">
+            © {new Date().getFullYear()} ThemeSoft Inc. All rights reserved.
+          </p>
+          <div className="footer-bottom-links">
+            <Link to="/privacy">Privacy</Link>
+            <Link to="/terms">Terms</Link>
+            <Link to="/cookies">Cookies</Link>
+          </div>
         </div>
       </div>
-    </div>
+    </footer>
   );
 };
 
-export default index;
+export default Footer;

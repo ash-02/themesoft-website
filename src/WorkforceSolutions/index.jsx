@@ -22,10 +22,8 @@ const ScrambleText = ({ finalText, isVisible }) => {
       setText(randomText);
     };
 
-    // Initial rapid scrambling
     interval = setInterval(scramble, 50);
 
-    // After 2 seconds, start revealing the actual text
     setTimeout(() => {
       clearInterval(interval);
       start = true;
@@ -115,7 +113,6 @@ const WorkforceSolutions = () => {
   }, []);
 
   useEffect(() => {
-    // Add animation classes after component mount
     const animateElements = () => {
       document.querySelectorAll('.animate-on-load').forEach((element, index) => {
         setTimeout(() => {
@@ -123,12 +120,11 @@ const WorkforceSolutions = () => {
         }, index * 200);
       });
 
-      // Add animation for title underline
       const titleWrapper = document.querySelector('.title-wrapper');
       if (titleWrapper) {
         setTimeout(() => {
           titleWrapper.classList.add('animate-in');
-        }, 600); // Delay the underline animation
+        }, 600);
       }
     };
 
@@ -141,7 +137,6 @@ const WorkforceSolutions = () => {
 
   return (
     <div className="workforce-container workforce-solutions">
-      {/* Animated background elements */}
       <div className="animated-bg">
         <div className="floating-circle"></div>
         <div className="floating-square"></div>
@@ -150,7 +145,6 @@ const WorkforceSolutions = () => {
       </div>
 
       <div className="workforce-wrapper">
-        {/* Hero Section */}
         <div className="hero-section animate-on-load">
           <h1 className="hero-title">
             <span className="title-wrapper">
@@ -161,7 +155,6 @@ const WorkforceSolutions = () => {
           </h1>
         </div>
 
-        {/* Solutions Grid */}
         <div className="solutions-grid">
           {solutions.map((solution, index) => (
             <div key={index} className="solution-card animate-on-load">
@@ -176,7 +169,6 @@ const WorkforceSolutions = () => {
           ))}
         </div>
 
-        {/* Stats Section */}
         <div ref={statsRef} className={`stats-section ${isStatsVisible ? 'animate-in' : ''}`}>
           <div className="stat-item">
             <div className="stat-number">
