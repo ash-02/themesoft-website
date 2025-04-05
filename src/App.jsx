@@ -5,7 +5,7 @@ import Home from './Home/index.jsx'
 import Footer from './Footer/index.jsx'
 import WorkforceSolutions from './WorkforceSolutions/index.jsx'
 import Industries from './Industries/index.jsx'
-import About from './about/index.jsx'
+import About from './About/index.jsx'
 import Contact from './Contact/index.jsx'
 import './App.css'
 
