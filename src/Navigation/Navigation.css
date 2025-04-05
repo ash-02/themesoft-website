@@ -330,4 +330,35 @@
 /* Prevent content scroll when menu is open */
 body.menu-open {
     overflow: hidden;
+}
+
+/* Light navbar specific styles */
+.navbar.light-navbar {
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.navbar.light-navbar .nav-logo {
+    filter: brightness(0.2);
+}
+
+.navbar.light-navbar .nav-link {
+    color: #1f2937;
+}
+
+.navbar.light-navbar .nav-link:hover {
+    color: #4f46e5;
+}
+
+.navbar.light-navbar .hamburger,
+.navbar.light-navbar .hamburger::before,
+.navbar.light-navbar .hamburger::after {
+    background-color: #1f2937;
+}
+
+.navbar.scrolled .nav-link {
+    color: #1f2937;
+}
+
+.navbar.scrolled .nav-link:hover {
+    color: #4f46e5;
 } 

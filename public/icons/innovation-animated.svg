@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .bulb { fill: none; stroke: #fff; stroke-width: 2; }
+    .rays { fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; }
+    @keyframes glow {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+    .rays {
+      animation: glow 2s ease-in-out infinite;
+    }
+  </style>
+  
+  <g>
+    <path class="bulb" d="M50 20c-11 0-20 9-20 20c0 7 3 13 8 17v8h24v-8c5-4 8-10 8-17c0-11-9-20-20-20zM42 65v5h16v-5"/>
+    <path class="rays" d="M50 10v-5M20 50h-5M85 50h-5M26 26l-4-4M74 26l4-4"/>
+  </g>
+</svg> 

@@ -7,7 +7,11 @@ const Index = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
-  const isLightNavbar = location.pathname === '/workforce-solutions' || location.pathname === '/industries';
+  const isLightNavbar = location.pathname === '/workforce-solutions' ||
+                        location.pathname === '/industries' ||
+                        location.pathname === '/about' ||
+                        location.pathname === '/careers' ||
+                        location.pathname === '/contact';
 
   useEffect(() => {
     const handleScroll = () => {

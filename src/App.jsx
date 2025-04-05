@@ -5,6 +5,8 @@ import Home from './Home/index.jsx'
 import Footer from './Footer/index.jsx'
 import WorkforceSolutions from './WorkforceSolutions/index.jsx'
 import Industries from './Industries/index.jsx'
+import About from './about/index.jsx'
+import Contact from './Contact/index.jsx'
 import './App.css'
 
 // ScrollToTop component to handle scroll position
@@ -28,6 +30,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/workforce-solutions" element={<WorkforceSolutions />} />
           <Route path="/industries" element={<Industries />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
           {/* Add more routes as needed */}
         </Routes>
         <Footer />

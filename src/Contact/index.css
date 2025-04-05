@@ -1,0 +1,525 @@
+/* Contact Page Layout */
+.contact-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 100vh;
+    padding: 120px 20px;
+    background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+    color: #1e293b;
+    margin-top: -60px;
+}
+
+.contact-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 1200px;
+    width: 100%;
+    gap: 80px;
+}
+
+.contact-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    gap: 1.5rem;
+}
+
+.contact-title {
+    font-size: 4.5rem;
+    font-weight: 700;
+    line-height: 1.1;
+    background: linear-gradient(135deg, #1e293b 0%, #4f46e5 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.02em;
+}
+
+.contact-subtitle {
+    font-size: 1.25rem;
+    color: #64748b;
+    line-height: 1.6;
+    max-width: 400px;
+}
+
+.contact-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    background: white;
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.contact-form input,
+.contact-form textarea {
+    background: #f8fafc;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 16px;
+    font-size: 1rem;
+    color: #1e293b;
+    outline: none;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.contact-form textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #4f46e5;
+    background: white;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: #94a3b8;
+}
+
+.contact-submit-btn {
+    margin-top: 8px;
+    padding: 16px 32px;
+    font-size: 1.125rem;
+    font-weight: 600;
+    border-radius: 12px;
+    background: #4f46e5;
+    color: white;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.contact-submit-btn:hover {
+    background: #4338ca;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);
+}
+
+/* Main Banner */
+.main-banner {
+    position: relative;
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Map Container */
+.map-container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+}
+
+/* Address Container */
+.address-container {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 60%;
+    max-width: 600px;
+    height: auto;
+    padding: 2.5rem;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    z-index: 2;
+    gap: 2rem;
+}
+
+.address-container::before {
+    display: none;
+}
+
+/* Address Content */
+.address-content {
+    width: 100%;
+    font-size: 1rem;
+    color: #1f2937;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    text-align: left;
+    font-family: "Montserrat", sans-serif;
+}
+
+.office-title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+    text-align: left;
+    color: #1f2937;
+    letter-spacing: 0.05em;
+}
+
+.address-content p {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    margin: 0;
+    color: #374151;
+}
+
+.address-content strong {
+    color: #4f46e5;
+    font-weight: 600;
+    font-size: 1rem;
+    display: inline-block;
+    margin-right: 0.5rem;
+}
+
+/* Stamp Image */
+.address-stamp-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 280px;
+    height: 280px;
+    padding: 0;
+}
+
+.address-stamp {
+    width: 100%;
+    height: 75%;
+    object-fit: fill;
+    transform: scale(1.2);
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .address-container {
+        width: 90%;
+        padding: 1.5rem;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .address-stamp-container {
+        width: 180px;
+        height: 180px;
+    }
+
+    .address-stamp {
+        transform: scale(1.2);
+        height: 110%;
+    }
+
+    .office-title {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .address-content {
+        text-align: center;
+    }
+}
+
+/* Global Locations Section */
+.global-locations {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    padding: 4rem 0;
+    color: #ffffff;
+    background: linear-gradient(135deg, #1e2875 0%, #2c3a9e 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.global-locations::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-image: 
+        radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.025) 0, transparent 29%),
+        radial-gradient(circle at 80% 30%, rgba(255, 255, 255, 0.025) 0, transparent 29%),
+        radial-gradient(circle at 40% 70%, rgba(255, 255, 255, 0.025) 0, transparent 29%),
+        radial-gradient(circle at 70% 80%, rgba(255, 255, 255, 0.025) 0, transparent 29%);
+    animation: slowRotate 30s linear infinite;
+}
+
+.global-locations::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-image: 
+        radial-gradient(2px 2px at 40% 40%, rgba(255, 255, 255, 0.15) 50%, transparent 50%),
+        radial-gradient(2px 2px at 60% 60%, rgba(255, 255, 255, 0.15) 50%, transparent 50%),
+        radial-gradient(3px 3px at 20% 70%, rgba(255, 255, 255, 0.15) 50%, transparent 50%),
+        radial-gradient(3px 3px at 80% 20%, rgba(255, 255, 255, 0.15) 50%, transparent 50%);
+    background-size: 150px 150px;
+    animation: particleFloat 20s ease-in-out infinite alternate;
+}
+
+@keyframes slowRotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes particleFloat {
+    0% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(10px);
+    }
+}
+
+.locations-title {
+    position: relative;
+    z-index: 1;
+    font-size: 3.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 4rem;
+    color: #ffffff;
+    line-height: 1.2;
+}
+
+.location-section h3 {
+    color: #ffffff;
+}
+
+.location-section h3::before {
+    background: #ffffff;
+}
+
+.location-section h3::after {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.office {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.office:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+.office h4 {
+    color: #ffffff;
+}
+
+.office p {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.office .registered {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .locations-title {
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+    }
+
+    .location-section h3 {
+        font-size: 1.75rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .office {
+        padding: 1.5rem;
+    }
+
+    .office h4 {
+        font-size: 1.25rem;
+    }
+
+    .office p {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    .locations-grid {
+        padding: 0 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-container {
+        padding: 80px 20px;
+        margin-top: -40px;
+    }
+
+    .contact-content {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .contact-left {
+        text-align: center;
+        align-items: center;
+    }
+
+    .contact-title {
+        font-size: 3rem;
+    }
+
+    .contact-subtitle {
+        font-size: 1.125rem;
+        margin: 0 auto;
+    }
+
+    .contact-form {
+        padding: 32px 24px;
+    }
+}
+
+.locations-grid {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.location-section {
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.location-section h3 {
+    font-size: 2.25rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    position: relative;
+    padding-bottom: 0.75rem;
+    letter-spacing: -0.02em;
+}
+
+.location-section h3::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 2rem;
+    height: 4px;
+    border-radius: 2px;
+}
+
+.location-section h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 2.25rem;
+    width: 4rem;
+    height: 4px;
+    border-radius: 2px;
+}
+
+.offices-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.office {
+    padding: 2rem;
+    border-radius: 16px;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.office h4 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+}
+
+.office p {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    margin: 0.75rem 0;
+}
+
+.office .registered {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+}
+
+@media (max-width: 768px) {
+    .locations-grid {
+        padding: 0 1.5rem;
+        gap: 2rem;
+    }
+
+    .location-section {
+        margin-bottom: 1.5rem;
+    }
+
+    .offices-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .office {
+        padding: 1.5rem;
+    }
+
+    .office h4 {
+        font-size: 1.25rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .office p {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin: 0.5rem 0;
+    }
+}
