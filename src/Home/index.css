@@ -1,11 +1,12 @@
 .home-main {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     width: 100vw;
     background-color: #282c34;
     color: white;
+    overflow-x: hidden;
 }
 
 .home-main .banner-main {
@@ -28,4 +29,675 @@
     width: 100vw;
     background-color: #282c34;
     color: white;
+}
+
+.banner-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(-45deg, #1a237e, #1e3a8a, #1e40af, #312e81);
+    background-size: 400% 400%;
+    animation: gradientFlow 15s ease infinite;
+}
+
+.animated-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.particle-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: particleFloat 4s linear infinite;
+    animation-delay: var(--delay);
+    left: var(--position);
+}
+
+.floating-element {
+    position: absolute;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    mix-blend-mode: screen;
+    transition: transform 0.1s ease-out;
+}
+
+.element-1 {
+    width: 400px;
+    height: 400px;
+    top: -100px;
+    left: -100px;
+    background: radial-gradient(circle at center, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+}
+
+.element-2 {
+    width: 300px;
+    height: 300px;
+    top: 40%;
+    right: -50px;
+    background: radial-gradient(circle at center, rgba(129, 140, 248, 0.15) 0%, transparent 70%);
+}
+
+.element-3 {
+    width: 250px;
+    height: 250px;
+    bottom: -50px;
+    left: 25%;
+    background: radial-gradient(circle at center, rgba(165, 180, 252, 0.15) 0%, transparent 70%);
+}
+
+.element-4 {
+    width: 200px;
+    height: 200px;
+    top: 20%;
+    left: 30%;
+    background: radial-gradient(circle at center, rgba(199, 210, 254, 0.15) 0%, transparent 70%);
+}
+
+.element-5 {
+    width: 350px;
+    height: 350px;
+    bottom: 10%;
+    right: 20%;
+    background: radial-gradient(circle at center, rgba(224, 231, 255, 0.15) 0%, transparent 70%);
+}
+
+.element-6 {
+    width: 280px;
+    height: 280px;
+    top: 15%;
+    right: 25%;
+    background: radial-gradient(circle at center, rgba(239, 246, 255, 0.15) 0%, transparent 70%);
+}
+
+.banner-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 1s ease-out;
+}
+
+.banner-content.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.animate-title {
+    animation: slideIn 1s ease-out forwards;
+    background: linear-gradient(to right, #fff, #a5b4fc);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.word-animation-container {
+    height: 40px;
+    margin: 1rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.changing-text {
+    animation: fadeInOut 2s ease-in-out infinite;
+    min-width: 120px;
+    display: inline-block;
+    position: relative;
+}
+
+.changing-text::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #60a5fa, transparent);
+    animation: lineFlow 2s ease-in-out infinite;
+}
+
+.primary-btn {
+    background: linear-gradient(45deg, #4F46E5, #7C3AED);
+    color: white;
+    padding: 12px 32px;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.primary-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+.primary-btn:hover::before {
+    left: 100%;
+}
+
+.primary-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.secondary-btn {
+    background: transparent;
+    color: white;
+    padding: 12px 32px;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+.secondary-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+.secondary-btn:hover::before {
+    left: 100%;
+}
+
+.secondary-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: white;
+}
+
+.btn-shine {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    transform: rotate(45deg);
+    pointer-events: none;
+    transition: transform 0.3s ease;
+}
+
+.primary-btn:hover .btn-shine,
+.secondary-btn:hover .btn-shine {
+    transform: rotate(45deg) translate(50%, 50%);
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 2s infinite;
+    z-index: 2;
+}
+
+.mouse {
+    width: 26px;
+    height: 42px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 13px;
+    position: relative;
+}
+
+.mouse::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 8px;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 8px;
+    background: white;
+    border-radius: 2px;
+    animation: scrollAnimation 2s infinite;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInOut {
+    0%, 100% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scrollAnimation {
+    0% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+    75% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(16px);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(16px);
+    }
+}
+
+@keyframes gradientFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes particleFloat {
+    0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) translateX(100px);
+        opacity: 0;
+    }
+}
+
+@keyframes lineFlow {
+    0%, 100% {
+        width: 0;
+        left: 50%;
+        opacity: 0;
+    }
+    50% {
+        width: 100%;
+        left: 0;
+        opacity: 1;
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    40% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+    60% {
+        transform: translateX(-50%) translateY(-5px);
+    }
+}
+
+@media (max-width: 768px) {
+    .banner-content {
+        padding: 1rem;
+    }
+    
+    .animate-title {
+        font-size: 2.5rem;
+    }
+    
+    .changing-text {
+        min-width: 100px;
+    }
+    
+    .primary-btn,
+    .secondary-btn {
+        padding: 10px 24px;
+        font-size: 0.9rem;
+    }
+}
+
+/* About Section Animations */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.animate-slide-up {
+    opacity: 0;
+    animation: slideUp 0.6s ease-out forwards;
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.delay-200 {
+    animation-delay: 200ms;
+}
+
+.delay-300 {
+    animation-delay: 300ms;
+}
+
+.delay-400 {
+    animation-delay: 400ms;
+}
+
+.delay-500 {
+    animation-delay: 500ms;
+}
+
+.delay-600 {
+    animation-delay: 600ms;
+}
+
+.delay-700 {
+    animation-delay: 700ms;
+}
+
+.delay-800 {
+    animation-delay: 800ms;
+}
+
+/* Stat Card Hover Effect */
+.stat-card {
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Counter Animation */
+@keyframes countUp {
+    from {
+        transform: translateY(10px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.animate-count-up {
+    animation: countUp 1s ease-out forwards;
+    display: inline-block;
+}
+
+/* Feature Card Hover Effect */
+.feature-card {
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+/* About Section Background Effects */
+.about-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.about-particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.about-particle {
+    position: absolute;
+    width: var(--size);
+    height: var(--size);
+    background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+    border-radius: 50%;
+    opacity: 0;
+    top: 100%;
+    left: var(--position);
+    animation: floatAbout var(--duration, 15s) linear infinite;
+    animation-delay: var(--delay);
+    box-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+    pointer-events: none;
+    transform-style: preserve-3d;
+    will-change: transform, opacity;
+}
+
+.about-gradient-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.1;
+    animation: orbFloat 20s ease-in-out infinite;
+}
+
+.orb-1 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle at center, #8b5cf6 0%, transparent 70%);
+    top: -100px;
+    left: -100px;
+    animation-delay: 0s;
+}
+
+.orb-2 {
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle at center, #6366f1 0%, transparent 70%);
+    top: 40%;
+    right: -50px;
+    animation-delay: -5s;
+}
+
+.orb-3 {
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle at center, #7c3aed 0%, transparent 70%);
+    bottom: -100px;
+    left: 25%;
+    animation-delay: -10s;
+}
+
+.orb-4 {
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle at center, #4f46e5 0%, transparent 70%);
+    top: 20%;
+    right: 25%;
+    animation-delay: -15s;
+}
+
+@keyframes floatAbout {
+    0% {
+        transform: translateY(0) translateX(0) scale(1);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.8;
+        transform: translateY(-10%) translateX(10px) scale(1.1);
+    }
+    50% {
+        opacity: 0.5;
+        transform: translateY(-50vh) translateX(50px) scale(0.8);
+    }
+    90% {
+        opacity: 0.3;
+        transform: translateY(-90vh) translateX(20px) scale(0.9);
+    }
+    100% {
+        transform: translateY(-100vh) translateX(0) scale(1);
+        opacity: 0;
+    }
+}
+
+@keyframes orbFloat {
+    0%, 100% {
+        transform: translate(0, 0);
+    }
+    25% {
+        transform: translate(10px, -10px);
+    }
+    50% {
+        transform: translate(-5px, 15px);
+    }
+    75% {
+        transform: translate(-15px, -5px);
+    }
+}
+
+/* Add backdrop blur to content */
+.about-section .container {
+    backdrop-filter: blur(5px);
+    padding: 2rem;
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.7);
+}
+
+/* About Section Scroll Animations */
+.about-section {
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+}
+
+.about-section.about-visible {
+    opacity: 1;
+}
+
+.about-section.about-visible .about-particle {
+    animation: floatAbout var(--duration, 15s) linear infinite;
+    animation-delay: var(--delay);
+}
+
+.about-section.about-visible .about-gradient-orb {
+    animation: orbFloat 20s ease-in-out infinite;
+}
+
+.animate-slide-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.about-visible .animate-slide-up {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.animate-fade-in {
+    opacity: 0;
+    transition: opacity 0.8s ease-out;
+}
+
+.about-visible .animate-fade-in {
+    opacity: 1;
+}
+
+/* Delay classes */
+.delay-200 {
+    transition-delay: 200ms;
+}
+
+.delay-300 {
+    transition-delay: 300ms;
+}
+
+.delay-400 {
+    transition-delay: 400ms;
+}
+
+.delay-500 {
+    transition-delay: 500ms;
+}
+
+.delay-600 {
+    transition-delay: 600ms;
+}
+
+.delay-700 {
+    transition-delay: 700ms;
+}
+
+.delay-800 {
+    transition-delay: 800ms;
 }

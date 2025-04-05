@@ -8,46 +8,46 @@ const index = () => {
     <div className="footer-all">
       <div className="footer-main">
         <div className="footer-logo">
-          <img src={tsLogo} alt="Tech Solutions" />
+          <img src={tsLogo} alt="Tech Solutions" className="responsive-logo" />
         </div>
         <div className="footer-content">
           <ul className="footer-column">
             <li className="heading">Services</li>
             <li>
-              <a href="">Artificial Intelligence</a>
+              <a href="#">Artificial Intelligence</a>
             </li>
             <li>
-              <a href="">Cyber Security</a>
+              <a href="#">Cyber Security</a>
             </li>
             <li>
-              <a href="">Cloud and Data Services</a>
+              <a href="#">Cloud and Data Services</a>
             </li>
             <li>
-              <a href="">Software Consulting</a>
+              <a href="#">Software Consulting</a>
             </li>
           </ul>
           <ul className="footer-column">
             <li className="heading">Corporate Overview</li>
             <li>
-              <a href="">About</a>
+              <a href="#">About</a>
             </li>
             <li>
-              <a href="">Careers</a>
+              <a href="#">Careers</a>
             </li>
           </ul>
           <ul className="footer-column">
             <li className="heading">Support</li>
             <li>
-              <a href="">Contact</a>
+              <a href="#">Contact</a>
             </li>
             <li>
-              <a href="">Fraud Alert</a>
+              <a href="#">Fraud Alert</a>
             </li>
           </ul>
         </div>
         <div className="footer-branches">
           <ul className="footer-column">
-            <div className="">
+            <div className="branch-info">
               <li
                 className="heading"
                 style={{
@@ -61,7 +61,7 @@ const index = () => {
               </li>
             </div>
             <br />
-            <ul className="">
+            <ul className="other-locations">
               <li className="heading">Other Locations</li>
               <li>Albany, NY</li>
               <li>Colorado Springs, CO</li>
@@ -74,16 +74,16 @@ const index = () => {
       <div className="footer-bottom">
         <p>&copy; 2025 Themesoft Inc. All rights reserved.</p>
         <div className="social-media-buttons">
-            <a href="">
+            <a href="#" aria-label="Facebook">
                 <i className="fab fa-facebook-f"></i>
             </a>
-            <a href="">
+            <a href="#" aria-label="Instagram">
                 <i className="fab fa-instagram"></i>
             </a>
-            <a href="">
+            <a href="#" aria-label="Twitter">
                 <i className="fab fa-twitter"></i>
             </a>
-            <a href="">
+            <a href="#" aria-label="LinkedIn">
                 <i className="fab fa-linkedin-in"></i>
             </a>
         </div>
