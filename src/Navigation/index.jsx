@@ -39,7 +39,7 @@ const Index = () => {
     { title: 'Expertise', path: '/' },
     { title: 'Workforce Solutions', path: '/workforce-solutions' },
     { title: 'Industries', path: '/industries' },
-    { title: 'Supplier Diversity', path: '/#' },
+    { title: 'Supplier Diversity', path: '#' },
     { title: 'About', path: '/about' },
     { title: 'Careers', path: '#' },
     { title: 'Contact', path: '/contact' },
