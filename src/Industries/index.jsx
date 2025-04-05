@@ -94,19 +94,23 @@ const Industries = () => {
       const observer = new IntersectionObserver(
         ([entry]) => {
           if (entry.isIntersecting) {
-            // Get the card's position relative to viewport
-            const rect = entry.target.getBoundingClientRect();
-            const viewportHeight = window.innerHeight;
-            const viewportCenter = viewportHeight / 2;
-            const elementCenter = rect.top + (rect.height / 2);
-            
-            // Check if the card is in the center of the viewport
-            // We'll use a threshold of 150px from the center
-            const isInCenter = Math.abs(elementCenter - viewportCenter) < 150;
-            
-            if (isInCenter) {
-              entry.target.classList.add('in-view');
+            // Only apply center detection on mobile screens
+            if (window.innerWidth <= 768) {
+              const rect = entry.target.getBoundingClientRect();
+              const viewportHeight = window.innerHeight;
+              const viewportCenter = viewportHeight / 2;
+              const elementCenter = rect.top + (rect.height / 2);
+              
+              // Tighter threshold for center detection (100px instead of 150px)
+              const isInCenter = Math.abs(elementCenter - viewportCenter) < 100;
+              
+              if (isInCenter) {
+                entry.target.classList.add('in-view');
+              } else {
+                entry.target.classList.remove('in-view');
+              }
             } else {
+              // On desktop, remove the in-view class to allow normal hover behavior
               entry.target.classList.remove('in-view');
             }
           } else {
@@ -114,8 +118,8 @@ const Industries = () => {
           }
         },
         {
-          threshold: [0, 0.25, 0.5, 0.75, 1], // Multiple thresholds for smoother detection
-          rootMargin: '-10% 0px'
+          threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1], // More thresholds for smoother detection
+          rootMargin: '-5% 0px' // Smaller margin for more precise detection
         }
       );
 
@@ -123,26 +127,45 @@ const Industries = () => {
       if (currentCard) {
         observer.observe(currentCard);
         
-        // Add scroll event listener to continuously check card position
+        // Throttled scroll handler for better performance
+        let ticking = false;
         const handleScroll = () => {
-          const rect = currentCard.getBoundingClientRect();
-          const viewportHeight = window.innerHeight;
-          const viewportCenter = viewportHeight / 2;
-          const elementCenter = rect.top + (rect.height / 2);
-          const isInCenter = Math.abs(elementCenter - viewportCenter) < 150;
-          
-          if (isInCenter) {
-            currentCard.classList.add('in-view');
-          } else {
-            currentCard.classList.remove('in-view');
+          if (!ticking && window.innerWidth <= 768) {
+            window.requestAnimationFrame(() => {
+              const rect = currentCard.getBoundingClientRect();
+              const viewportHeight = window.innerHeight;
+              const viewportCenter = viewportHeight / 2;
+              const elementCenter = rect.top + (rect.height / 2);
+              const isInCenter = Math.abs(elementCenter - viewportCenter) < 100;
+              
+              if (isInCenter) {
+                currentCard.classList.add('in-view');
+              } else {
+                currentCard.classList.remove('in-view');
+              }
+              ticking = false;
+            });
+            ticking = true;
           }
         };
 
-        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        
+        // Also handle resize events to toggle between mobile and desktop behavior
+        const handleResize = () => {
+          if (window.innerWidth > 768) {
+            currentCard.classList.remove('in-view');
+          } else {
+            handleScroll();
+          }
+        };
+        
+        window.addEventListener('resize', handleResize, { passive: true });
         
         return () => {
           observer.unobserve(currentCard);
           window.removeEventListener('scroll', handleScroll);
+          window.removeEventListener('resize', handleResize);
         };
       }
     }, []);

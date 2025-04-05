@@ -1,28 +1,21 @@
 import React, { useEffect, useState, useRef } from 'react'
 import './index.css'
+import ExpertiseSection from '../components/ExpertiseSection';
 
 const Index = () => {
-    const [isVisible, setIsVisible] = useState(false);
+    const [isVisible, setIsVisible] = useState(true);
     const [isAboutVisible, setIsAboutVisible] = useState(false);
-    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+    const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200);
     const bannerRef = useRef(null);
     const aboutRef = useRef(null);
 
     useEffect(() => {
-        setIsVisible(true);
-
-        const handleMouseMove = (e) => {
-            if (!bannerRef.current) return;
-            const rect = bannerRef.current.getBoundingClientRect();
-            
-            if (e.clientY >= rect.top && e.clientY <= rect.bottom) {
-                setMousePosition({
-                    x: ((e.clientX - rect.left) / rect.width) * 2 - 1,
-                    y: ((e.clientY - rect.top) / rect.height) * 2 - 1
-                });
-            }
+        const handleResize = () => {
+            setWindowWidth(window.innerWidth);
         };
 
+        window.addEventListener('resize', handleResize);
+        
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {
@@ -31,7 +24,8 @@ const Index = () => {
                 }
             },
             {
-                threshold: 0.2
+                threshold: 0.2,
+                rootMargin: '50px'
             }
         );
 
@@ -39,12 +33,24 @@ const Index = () => {
             observer.observe(aboutRef.current);
         }
 
-        window.addEventListener('mousemove', handleMouseMove);
+        if (aboutRef.current && aboutRef.current.getBoundingClientRect().top < window.innerHeight) {
+            setIsAboutVisible(true);
+        }
+
         return () => {
-            window.removeEventListener('mousemove', handleMouseMove);
             observer.disconnect();
+            window.removeEventListener('resize', handleResize);
         };
     }, []);
+
+    const getParticleRadius = (baseRadius, variation) => {
+        if (windowWidth <= 768) {
+            return (baseRadius * 0.6) + (Math.random() * variation * 0.6);
+        } else if (windowWidth <= 1024) {
+            return (baseRadius * 0.8) + (Math.random() * variation * 0.8);
+        }
+        return baseRadius + (Math.random() * variation);
+    };
 
     const words = ["Innovation", "Excellence", "Technology", "Solutions"];
     const [currentWord, setCurrentWord] = useState(0);
@@ -61,31 +67,58 @@ const Index = () => {
             <div ref={bannerRef} className="banner-main min-h-screen w-full">
                 <div className="animated-background">
                     <div className="particle-container">
-                        {[...Array(50)].map((_, i) => (
-                            <div key={i} className="particle" style={{
-                                '--delay': `${Math.random() * 4}s`,
-                                '--position': `${Math.random() * 100}%`
-                            }}></div>
-                        ))}
+                        <div className="sprinkled-particles">
+                            {[...Array(30)].map((_, i) => {
+                                const startX = Math.random() * 100;
+                                const startY = Math.random() * 100;
+                                const floatX = (Math.random() - 0.5) * 200;
+                                const floatY = (Math.random() - 0.5) * 200;
+                                const endX = floatX + (Math.random() - 0.5) * 100;
+                                const endY = floatY + (Math.random() - 0.5) * 100;
+                                const duration = 10 + Math.random() * 15;
+                                const delay = Math.random() * 10;
+                                
+                                return (
+                                    <div
+                                        key={`sprinkle-${i}`}
+                                        className="sprinkled-particle"
+                                        style={{
+                                            left: `${startX}%`,
+                                            top: `${startY}%`,
+                                            '--float-x': `${floatX}px`,
+                                            '--float-y': `${floatY}px`,
+                                            '--float-end-x': `${endX}px`,
+                                            '--float-end-y': `${endY}px`,
+                                            '--float-duration': `${duration}s`,
+                                            '--float-delay': `${delay}s`
+                                        }}
+                                    />
+                                );
+                            })}
+                        </div>
+                        <div className="rotating-layer">
+                            {[...Array(60)].map((_, i) => {
+                                const angle = (i * (360 / 60));
+                                const radius = getParticleRadius(250, 50);
+                                return (
+                                    <div key={i} className="particle" style={{
+                                        transform: `rotate(${angle}deg) translateX(${radius}px)`
+                                    }}></div>
+                                );
+                            })}
+                        </div>
+                        <div className="rotating-layer rotating-layer-reverse">
+                            {[...Array(60)].map((_, i) => {
+                                const angle = (i * (360 / 60));
+                                const radius = getParticleRadius(300, 50);
+                                return (
+                                    <div key={i} className="particle" style={{
+                                        transform: `rotate(${angle}deg) translateX(${radius}px)`
+                                    }}></div>
+                                );
+                            })}
+                        </div>
                     </div>
-                    <div className="floating-element element-1" style={{
-                        transform: `translate(${mousePosition.x * 20}px, ${mousePosition.y * 20}px)`
-                    }}></div>
-                    <div className="floating-element element-2" style={{
-                        transform: `translate(${mousePosition.x * -15}px, ${mousePosition.y * -15}px)`
-                    }}></div>
-                    <div className="floating-element element-3" style={{
-                        transform: `translate(${mousePosition.x * 10}px, ${mousePosition.y * 10}px)`
-                    }}></div>
-                    <div className="floating-element element-4" style={{
-                        transform: `translate(${mousePosition.x * -25}px, ${mousePosition.y * -25}px)`
-                    }}></div>
-                    <div className="floating-element element-5" style={{
-                        transform: `translate(${mousePosition.x * 30}px, ${mousePosition.y * 30}px)`
-                    }}></div>
-                    <div className="floating-element element-6" style={{
-                        transform: `translate(${mousePosition.x * -20}px, ${mousePosition.y * -20}px)`
-                    }}></div>
                 </div>
                 <div className={`banner-content ${isVisible ? 'fade-in' : ''}`}>
                     <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white animate-title">
@@ -175,7 +208,7 @@ const Index = () => {
                     </div>
                 </div>
             </div>
-            <div id="services" className="services-section min-h-screen w-full relative overflow-hidden">
+            {/* <div id="services" className="services-section min-h-screen w-full relative overflow-hidden">
                 <div className="animated-gradient-bg absolute inset-0 z-0"></div>
                 <div className="services-background absolute inset-0 z-10">
                     <div className="absolute inset-0 bg-gradient-to-br from-violet-900/20 to-transparent"></div>
@@ -343,7 +376,8 @@ const Index = () => {
                         }
                     }
                 `}</style>
-            </div>
+            </div> */}
+            <ExpertiseSection />
         </div>
     )
 }

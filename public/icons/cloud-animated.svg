@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g filter="url(#glow)">
+    <!-- Main cloud -->
+    <path d="M60 45C60 51.6274 54.6274 57 48 57H30C24.4772 57 20 52.5228 20 47C20 41.4772 24.4772 37 30 37C30 30.3726 35.3726 25 42 25C47.9329 25 52.8579 29.2945 53.8479 35C57.3178 35.5481 60 38.4892 60 42V45Z" 
+          stroke="url(#gradient)" stroke-width="2" fill="none">
+      <animate attributeName="stroke-dasharray" from="0 200" to="200 200" dur="2s" begin="0s" fill="freeze" />
+    </path>
+
+    <!-- Inner cloud glow -->
+    <path d="M58 45C58 50.5228 53.5228 55 48 55H30C25.5817 55 22 51.4183 22 47C22 42.5817 25.5817 39 30 39C30 33.4772 34.4772 29 40 29C45.5228 29 50 33.4772 50 39C54.4183 39 58 42.5817 58 47V45Z" 
+          fill="url(#gradient)" opacity="0.1">
+      <animate attributeName="opacity" values="0.1;0.3;0.1" dur="3s" repeatCount="indefinite" />
+    </path>
+
+    <!-- Data streams -->
+    <g>
+      <!-- Stream 1 -->
+      <line x1="35" y1="45" x2="35" y2="52" stroke="#fff" stroke-width="2" opacity="0">
+        <animate attributeName="opacity" values="0;1;0" dur="1.5s" begin="0s" repeatCount="indefinite" />
+        <animate attributeName="y2" values="45;52" dur="1.5s" begin="0s" repeatCount="indefinite" />
+      </line>
+      <!-- Stream 2 -->
+      <line x1="42" y1="45" x2="42" y2="52" stroke="#fff" stroke-width="2" opacity="0">
+        <animate attributeName="opacity" values="0;1;0" dur="1.5s" begin="0.5s" repeatCount="indefinite" />
+        <animate attributeName="y2" values="45;52" dur="1.5s" begin="0.5s" repeatCount="indefinite" />
+      </line>
+      <!-- Stream 3 -->
+      <line x1="49" y1="45" x2="49" y2="52" stroke="#fff" stroke-width="2" opacity="0">
+        <animate attributeName="opacity" values="0;1;0" dur="1.5s" begin="1s" repeatCount="indefinite" />
+        <animate attributeName="y2" values="45;52" dur="1.5s" begin="1s" repeatCount="indefinite" />
+      </line>
+    </g>
+
+    <!-- Connection points -->
+    <circle cx="35" cy="45" r="2" fill="#fff">
+      <animate attributeName="r" values="2;3;2" dur="2s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="42" cy="45" r="2" fill="#fff">
+      <animate attributeName="r" values="2;3;2" dur="2s" repeatCount="indefinite" begin="0.5s" />
+    </circle>
+    <circle cx="49" cy="45" r="2" fill="#fff">
+      <animate attributeName="r" values="2;3;2" dur="2s" repeatCount="indefinite" begin="1s" />
+    </circle>
+
+    <!-- Rotating ring -->
+    <circle cx="42" cy="40" r="12" stroke="#fff" stroke-width="1" fill="none" opacity="0.3">
+      <animateTransform attributeName="transform" type="rotate" from="0 42 40" to="360 42 40" dur="10s" repeatCount="indefinite" />
+    </circle>
+  </g>
+
+  <!-- Definitions -->
+  <defs>
+    <linearGradient id="gradient" x1="20" y1="25" x2="60" y2="57">
+      <stop offset="0%" stop-color="#a5b4fc" />
+      <stop offset="100%" stop-color="#6366f1" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2" result="glow" />
+      <feMerge>
+        <feMergeNode in="glow" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+</svg> 

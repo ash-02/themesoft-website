@@ -511,18 +511,18 @@
     grid-template-columns: 1fr;
     gap: 2rem;
   }
-
+  
   .industry-card {
     padding: 2.5rem 1.5rem;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: scale(0.95);
+    opacity: 0.7;
   }
   
-  .industries-intro {
-    margin-bottom: 4rem;
-  }
-
-  /* Add mobile in-view animations */
+  /* Smooth transition for cards entering/leaving the center viewport */
   .industry-card.in-view {
-    transform: translateY(-5px);
+    transform: scale(1) translateY(-5px);
+    opacity: 1;
     box-shadow: 0 20px 25px rgba(0, 0, 0, 0.1);
     border-color: #7c3aed;
     background: rgba(255, 255, 255, 0.95);
@@ -532,44 +532,29 @@
     transform: scale(1.1);
     background: rgba(124, 58, 237, 0.2);
     box-shadow: 0 8px 24px rgba(124, 58, 237, 0.15);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .industry-card.in-view .industry-icon::after {
     opacity: 1;
+    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .industry-card.in-view .industry-icon svg {
     transform: scale(1.1);
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .industry-card.in-view .meteor:nth-child(1) {
-    top: 20%;
-    right: -10%;
-    animation: meteorShower 1.5s linear infinite;
-    animation-delay: 0s;
+  /* Meteor animations for in-view cards */
+  .industry-card.in-view .meteor {
+    animation-play-state: running;
   }
 
-  .industry-card.in-view .meteor:nth-child(2) {
-    top: 40%;
-    right: 20%;
-    animation: meteorShower 2s linear infinite;
-    animation-delay: 0.4s;
+  .industry-card .meteor {
+    animation-play-state: paused;
   }
 
-  .industry-card.in-view .meteor:nth-child(3) {
-    top: 60%;
-    right: -20%;
-    animation: meteorShower 1.8s linear infinite;
-    animation-delay: 0.8s;
-  }
-
-  .industry-card.in-view .meteor:nth-child(4) {
-    top: 80%;
-    right: 10%;
-    animation: meteorShower 1.6s linear infinite;
-    animation-delay: 0.2s;
-  }
-
+  /* Ripple effect for in-view cards */
   .industry-card.in-view::before {
     animation: rippleEffect 1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   }

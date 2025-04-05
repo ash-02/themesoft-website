@@ -3,10 +3,12 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    width: 100vw;
+    width: 100%;
+    min-height: 100vh;
     background-color: #282c34;
     color: white;
     overflow-x: hidden;
+    position: relative;
 }
 
 .home-main .banner-main {
@@ -43,6 +45,32 @@
     background: linear-gradient(-45deg, #1a237e, #1e3a8a, #1e40af, #312e81);
     background-size: 400% 400%;
     animation: gradientFlow 15s ease infinite;
+    padding: 20px;
+}
+
+.banner-content {
+    position: relative;
+    z-index: 10;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 1s ease-out;
+}
+
+.banner-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.banner-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .animated-background {
@@ -53,6 +81,41 @@
     height: 100%;
     overflow: hidden;
     z-index: 1;
+    opacity: 1;
+    background: radial-gradient(circle at center, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+}
+
+.animated-background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom right, 
+        rgba(99, 102, 241, 0.15),
+        rgba(129, 140, 248, 0.15),
+        rgba(165, 180, 252, 0.15)
+    );
+    filter: blur(100px);
+    transform: translateZ(0);
+}
+
+.animated-background::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 800px;
+    height: 800px;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle at center,
+        rgba(99, 102, 241, 0.3) 0%,
+        rgba(99, 102, 241, 0.2) 30%,
+        transparent 70%
+    );
+    border-radius: 50%;
+    z-index: -1;
 }
 
 .particle-container {
@@ -60,18 +123,111 @@
     width: 100%;
     height: 100%;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sprinkled-particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.sprinkled-particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    pointer-events: none;
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.6);
+    opacity: 0;
+    animation: floatAround var(--float-duration) ease-in-out infinite;
+    animation-delay: var(--float-delay);
+    will-change: transform, opacity;
+}
+
+.sprinkled-particle:nth-child(3n) {
+    width: 4px;
+    height: 4px;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
+}
+
+.sprinkled-particle:nth-child(5n) {
+    width: 2px;
+    height: 2px;
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
+}
+
+@keyframes floatAround {
+    0% {
+        transform: translate(0, 0);
+        opacity: 0;
+    }
+    25% {
+        opacity: 1;
+    }
+    50% {
+        transform: translate(var(--float-x), var(--float-y));
+        opacity: 0.8;
+    }
+    75% {
+        opacity: 0.5;
+    }
+    100% {
+        transform: translate(var(--float-end-x), var(--float-end-y));
+        opacity: 0;
+    }
+}
+
+.rotating-layer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    animation: containerRotate 30s linear infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    will-change: transform;
+}
+
+.rotating-layer-reverse {
+    animation: containerRotateReverse 35s linear infinite;
 }
 
 .particle {
     position: absolute;
-    width: 2px;
-    height: 2px;
-    background: rgba(255, 255, 255, 0.5);
+    width: 6px;
+    height: 6px;
+    background: rgba(255, 255, 255, 1);
     border-radius: 50%;
     pointer-events: none;
-    animation: particleFloat 4s linear infinite;
-    animation-delay: var(--delay);
-    left: var(--position);
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+    opacity: 1;
+    will-change: transform;
+}
+
+.particle:nth-child(3n) {
+    width: 8px;
+    height: 8px;
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.9);
+}
+
+.particle:nth-child(5n) {
+    width: 4px;
+    height: 4px;
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.7);
+}
+
+.particle:nth-child(7n) {
+    opacity: 0.8;
+}
+
+.particle:nth-child(11n) {
+    opacity: 0.9;
 }
 
 .floating-element {
@@ -129,23 +285,6 @@
     top: 15%;
     right: 25%;
     background: radial-gradient(circle at center, rgba(239, 246, 255, 0.15) 0%, transparent 70%);
-}
-
-.banner-content {
-    position: relative;
-    z-index: 2;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
-    text-align: center;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 1s ease-out;
-}
-
-.banner-content.fade-in {
-    opacity: 1;
-    transform: translateY(0);
 }
 
 .animate-title {
@@ -355,17 +494,21 @@
     }
 }
 
-@keyframes particleFloat {
+@keyframes containerRotate {
     0% {
-        transform: translateY(0) translateX(0);
-        opacity: 0;
-    }
-    50% {
-        opacity: 1;
+        transform: rotate(0deg);
     }
     100% {
-        transform: translateY(-100vh) translateX(100px);
-        opacity: 0;
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes containerRotateReverse {
+    0% {
+        transform: rotate(360deg);
+    }
+    100% {
+        transform: rotate(0deg);
     }
 }
 
@@ -412,6 +555,202 @@
         padding: 10px 24px;
         font-size: 0.9rem;
     }
+
+    .particle {
+        width: 4px;
+        height: 4px;
+        box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+    }
+
+    .particle:nth-child(3n) {
+        width: 6px;
+        height: 6px;
+        box-shadow: 0 0 8px rgba(255, 255, 255, 0.9);
+    }
+
+    .particle:nth-child(5n) {
+        width: 3px;
+        height: 3px;
+        box-shadow: 0 0 4px rgba(255, 255, 255, 0.7);
+    }
+
+    .animated-background::after {
+        width: 300px;
+        height: 300px;
+    }
+
+    .rotating-layer {
+        animation: containerRotate 25s linear infinite;
+    }
+
+    .rotating-layer-reverse {
+        animation: containerRotateReverse 28s linear infinite;
+    }
+
+    .sprinkled-particle {
+        width: 2px;
+        height: 2px;
+    }
+
+    .sprinkled-particle:nth-child(3n) {
+        width: 3px;
+        height: 3px;
+    }
+
+    .sprinkled-particle:nth-child(5n) {
+        width: 1px;
+        height: 1px;
+    }
+
+    /* Enhanced mobile-specific particle animations for about section */
+    .about-section {
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.98));
+        position: relative;
+        overflow: hidden;
+    }
+
+    .about-section .about-particles {
+        opacity: 1;
+        perspective: 1000px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+    }
+
+    .about-particle {
+        --size: calc(4px + var(--random-size, 4px));
+        background: linear-gradient(135deg, #7c3aed 0%, #6366f1 100%);
+        box-shadow: 0 0 15px rgba(124, 58, 237, 0.8);
+        opacity: 0;
+        position: absolute;
+        width: var(--size);
+        height: var(--size);
+        border-radius: 50%;
+        animation: mobileMeteor var(--duration, 3s) linear infinite;
+        animation-delay: var(--delay);
+        top: -10px;
+        left: var(--position);
+    }
+
+    .about-particle:nth-child(3n) {
+        --size: calc(6px + var(--random-size, 3px));
+        background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+        box-shadow: 0 0 20px rgba(139, 92, 246, 0.9);
+        animation-duration: 4s;
+    }
+
+    .about-particle:nth-child(5n) {
+        --size: calc(5px + var(--random-size, 2px));
+        background: linear-gradient(135deg, #6366f1 0%, #818cf8 100%);
+        box-shadow: 0 0 18px rgba(99, 102, 241, 0.85);
+        animation-duration: 3.5s;
+    }
+
+    .about-particle:nth-child(7n) {
+        --size: calc(7px + var(--random-size, 3px));
+        background: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%);
+        box-shadow: 0 0 25px rgba(79, 70, 229, 0.95);
+        animation-duration: 4.5s;
+    }
+
+    @keyframes mobileMeteor {
+        0% {
+            transform: translateY(0) translateX(0) rotate(0deg) scale(0);
+            opacity: 0;
+        }
+        5% {
+            opacity: 1;
+            transform: translateY(10%) translateX(10%) rotate(45deg) scale(1);
+        }
+        90% {
+            opacity: 1;
+            transform: translateY(90%) translateX(-20%) rotate(405deg) scale(0.8);
+        }
+        100% {
+            transform: translateY(100%) translateX(-25%) rotate(450deg) scale(0);
+            opacity: 0;
+        }
+    }
+
+    .about-gradient-orb {
+        filter: blur(50px);
+        opacity: 0.25;
+        animation: mobileOrbPulse 8s ease-in-out infinite;
+    }
+
+    @keyframes mobileOrbPulse {
+        0%, 100% {
+            transform: scale(1);
+            opacity: 0.25;
+        }
+        50% {
+            transform: scale(1.2);
+            opacity: 0.35;
+        }
+    }
+
+    .orb-1 {
+        width: 200px;
+        height: 200px;
+        background: radial-gradient(circle at center, rgba(139, 92, 246, 0.4) 0%, transparent 70%);
+        animation-delay: 0s;
+    }
+
+    .orb-2 {
+        width: 180px;
+        height: 180px;
+        background: radial-gradient(circle at center, rgba(124, 58, 237, 0.4) 0%, transparent 70%);
+        animation-delay: -2s;
+    }
+
+    .orb-3 {
+        width: 160px;
+        height: 160px;
+        background: radial-gradient(circle at center, rgba(99, 102, 241, 0.4) 0%, transparent 70%);
+        animation-delay: -4s;
+    }
+
+    .orb-4 {
+        width: 140px;
+        height: 140px;
+        background: radial-gradient(circle at center, rgba(79, 70, 229, 0.4) 0%, transparent 70%);
+        animation-delay: -6s;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .particle {
+        width: 5px;
+        height: 5px;
+    }
+
+    .particle:nth-child(3n) {
+        width: 7px;
+        height: 7px;
+    }
+
+    .particle:nth-child(5n) {
+        width: 3px;
+        height: 3px;
+    }
+
+    .animated-background::after {
+        width: 500px;
+        height: 500px;
+    }
+}
+
+/* Add hardware acceleration for smoother animations */
+.rotating-layer,
+.particle {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    perspective: 1000;
+    transform: translate3d(0, 0, 0);
 }
 
 /* About Section Animations */
