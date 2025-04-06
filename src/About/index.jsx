@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import './index.css'
+import tsLogo from "../assets/ts_logo.png"
 
 const About = () => {
   const obs = useRef()
@@ -17,7 +18,7 @@ const About = () => {
     <div className="about-container">
       <section className="top">
         <div className="bg">
-          <div className="overlay" />
+          {/* <div className="overlay" /> */}
           <div className="img" />
         </div>
         <div className="main fade-in">
@@ -46,7 +47,7 @@ const About = () => {
 
       <section className="abt">
         <div className="card fade-in">
-          <h2>Who We Are</h2>
+          <h2 data-text="Who We Are">Who We Are</h2>
           <p>
             ThemeSoft is a Dallas-based Woman Owned Minority Business Enterprise with global reach.
             Our journey of digital transformation spans across the United States, Canada, India, and Brazil,
@@ -65,70 +66,49 @@ const About = () => {
           <div className="gradient-sphere"></div>
           <div className="grid-pattern"></div>
         </div>
-        
-        <div className="section-header fade-in">
-          <h2>Our Core Values</h2>
-          <p>Discover the principles that drive our success and shape our culture</p>
-        </div>
 
         <div className="vals-container">
           {[
             {
-              title: "PEOPLE FIRST",
+              title: "People First",
               description: "Building trust through transparency and ethical practices. We prioritize relationships and personal growth.",
-              iconPath: "/icons/people-animated.svg",
+              color: "var(--coral)",
               delay: 100
             },
             {
-              title: "CLIENT SUCCESS",
-              description: "Your success is our success - we grow together. We're committed to delivering exceptional results.",
-              iconPath: "/icons/client-animated.svg",
+              title: "Client Success",
+              description: "Your success is our success - we grow together. We're committed to delivering exceptional results",
+              color: "var(--coral-light)",
               delay: 200
             },
             {
-              title: "COLLABORATION",
-              description: "Embracing diverse perspectives for innovative solutions. Together we achieve more.",
-              iconPath: "/icons/collab-animated.svg",
+              title: "Integrity",
+              description: "Upholding unwavering commitment to trust and excellence in everything we do",
+              color: "var(--gold)",
               delay: 300
             },
             {
-              title: "INTEGRITY",
-              description: "Unwavering commitment to trust and excellence in everything we do.",
-              iconPath: "/icons/integrity-animated.svg",
+              title: "Innovation",
+              description: "Pushing boundaries and redefining possibilities through creative thinking and cutting-edge solutions",
+              color: "var(--purple)",
               delay: 400
-            },
-            {
-              title: "INNOVATION",
-              description: "Pushing boundaries and redefining possibilities through creative thinking and cutting-edge solutions.",
-              iconPath: "/icons/innovation-animated.svg",
-              delay: 500
-            },
-            {
-              title: "EXCELLENCE",
-              description: "Delivering exceptional value in everything we do, setting the highest standards in our industry.",
-              iconPath: "/icons/excellence-animated.svg",
-              delay: 600
             }
           ].map((value, index) => (
             <div 
               key={index} 
               className="vals-card"
-              style={{ '--delay': `${value.delay}ms` }}
+              style={{ 
+                '--delay': `${value.delay}ms`,
+                '--accent-color': value.color
+              }}
             >
-              <div className="animated-icon-container">
-                <div className="icon-pulse"></div>
-                <div className="icon-ring"></div>
-                <div className="icon-wrapper">
-                  <img src={value.iconPath} alt="" className="animated-icon" />
-                </div>
-              </div>
               <h3>{value.title}</h3>
               <p>{value.description}</p>
-              <div className="card-footer">
-                <button className="learn-more">Learn More</button>
-              </div>
             </div>
           ))}
+          <div className="center-circle">
+            <h2>Our Core Values</h2>
+          </div>
         </div>
       </section>
 
@@ -160,6 +140,15 @@ const About = () => {
               <div className="place" style={{'--delay': '0.2s'}}>Canada</div>
               <div className="place" style={{'--delay': '0.4s'}}>India</div>
               <div className="place" style={{'--delay': '0.6s'}}>Brazil</div>
+              <div className="place" style={{'--delay': '0.8s'}}>
+                <img src={tsLogo} style={{
+                  width: '100%',
+                  maxWidth: '200px',
+                  height: 'auto',
+                  display: 'block',
+                  margin: '0 auto'
+                }} />
+              </div>
             </div>
           </div>
         </div>

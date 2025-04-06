@@ -428,7 +428,7 @@ body.menu-open {
 }
 
 .navbar.light-navbar .nav-link {
-    color: #1f2937;
+    /* color: #1f2937; */
 }
 
 .navbar.light-navbar .nav-link:hover {
@@ -599,7 +599,7 @@ body.menu-open {
   }
 
   .navbar.light-navbar .dropdown-item {
-    color: #1f2937;
+    color: white;
   }
 
   .navbar.light-navbar .dropdown-item:hover {

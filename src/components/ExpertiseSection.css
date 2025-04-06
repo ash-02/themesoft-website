@@ -303,7 +303,8 @@
   }
 
   .expertise-card p {
-    font-size: 0.8rem;
+    /* font-size: 0.8rem; */
+    display: none;
   }
 
   .animated-icon-container {

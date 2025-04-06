@@ -21,7 +21,7 @@
         "id": 3,
         "icon": "⚙️",
         "title": "Robotics and Automation",
-        "description": "Efficiency unleashed: Robotics and Automation. From assembly lines to autonomous systems. Robotics revolutionizes industry. Building the future, one robot at a time."
+        "description": "Efficiency unleashed: Robotics and Automation. From assembly lines to autonomous systems."
       }
     ]
   },
@@ -41,13 +41,13 @@
         "id": 2,
         "icon": "🔒",
         "title": "Information and Application Security",
-        "description": "Both are essential components of a comprehensive cybersecurity strategy aimed at mitigating risks and ensuring the overall integrity and security of digital assets."
+        "description": "Both are essential components of a comprehensive cybersecurity strategy aimed at mitigating risks."
       },
       {
         "id": 3,
         "icon": "🛡️",
         "title": "Security Awareness Training",
-        "description": "Our intensive training educates on security threats, best practices, and response procedures to mitigate risks, fostering a security-conscious culture within the organization."
+        "description": "Our intensive training educates on security threats, best practices, and response procedures to mitigate risks."
       }
     ]
   },
@@ -87,13 +87,13 @@
         "id": 1,
         "icon": "💻",
         "title": "Software Development and Technology Consulting",
-        "description": "As consultants, we help clients with requirements analysis, architecture design, coding standards, and best practices. Technology consultants also advise on selecting the right technologies, including languages, frameworks, and databases."
+        "description": "As consultants, we help clients with requirements analysis, architecture design, coding standards, and best practices."
       },
       {
         "id": 2,
         "icon": "🔄",
         "title": "Cloud and Digital Transformation Consulting",
-        "description": "Cloud consultants drive business transformations through strategy, migration, innovation, security, and optimization, enhancing operations, customer experiences, and competitiveness."
+        "description": "Cloud consultants drive business transformations through strategy, migration, innovation, security, and optimization, enhancing operations."
       },
       {
         "id": 3,
