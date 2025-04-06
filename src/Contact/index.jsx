@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import GoogleMapComponent from "./GoogleMap";
 import "./index.css";
@@ -14,6 +14,81 @@ const fadeIn = {
 };
 
 const ContactUs = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const autoPlayDelay = 6000000;
+
+  useEffect(() => {
+    let autoPlayTimer;
+    
+    if (isAutoPlaying) {
+      autoPlayTimer = setInterval(() => {
+        setCurrentSlide((prev) => (prev + 1) % 4);
+      }, autoPlayDelay);
+    }
+
+    return () => {
+      if (autoPlayTimer) {
+        clearInterval(autoPlayTimer);
+      }
+    };
+  }, [isAutoPlaying]);
+
+  const handleManualNavigation = (index) => {
+    setCurrentSlide(index);
+    setIsAutoPlaying(false);
+    // Resume auto-play after 10 seconds of inactivity
+    setTimeout(() => setIsAutoPlaying(true), 8000);
+  };
+
+  const locationSections = [
+    {
+      title: "North America",
+      offices: [
+        {
+          name: "Albany, NY",
+          address: "90 State St, Suite 700<br />Albany, NY - 12207"
+        },
+        {
+          name: "Colorado Springs, CO",
+          address: "1155 Kelly Johnson Blvd, Suite 111<br />Colorado Springs, CO - 80920"
+        },
+        {
+          name: "San Ramon, CA",
+          address: "4000 Bishop Drive<br />San Ramon, CA - 94583"
+        }
+      ]
+    },
+    {
+      title: "Canada",
+      offices: [
+        {
+          name: "Mississauga, Ontario",
+          address: "100 Traders Blvd E, Suite 200<br />Canada - L4Z 2H7"
+        }
+      ]
+    },
+    {
+      title: "Asia",
+      offices: [
+        {
+          name: "Chennai, India",
+          isRegistered: true,
+          address: "No.2008, Z Block, 2nd Street,<br />13th Main Road, Shanthi Colony,<br />Anna Nagar, Chennai 600 040"
+        }
+      ]
+    },
+    {
+      title: "South America",
+      offices: [
+        {
+          name: "Brazil",
+          address: "Themesoft Inc. - Tecnologia Eireli<br />Avenida Paulista, 2028, Conj. 111<br />Consolação, Bela Vista<br />São Paulo, SP, CEP 01310-200"
+        }
+      ]
+    }
+  ];
+
   return (
     <>
       <div className="main-banner">
@@ -57,55 +132,92 @@ const ContactUs = () => {
       >
         <h2 className="locations-title">Global Locations</h2>
         
-        <div className="locations-grid">
-          <div className="location-section">
-            <h3>North America</h3>
-            <div className="offices-grid">
-              <div className="office">
-                <h4>Albany, NY</h4>
-                <p>90 State St, Suite 700<br />Albany, NY - 12207</p>
-              </div>
-              <div className="office">
-                <h4>Colorado Springs, CO</h4>
-                <p>1155 Kelly Johnson Blvd, Suite 111<br />Colorado Springs, CO - 80920</p>
-              </div>
-              <div className="office">
-                <h4>San Ramon, CA</h4>
-                <p>4000 Bishop Drive<br />San Ramon, CA - 94583</p>
+        <div className="country-nav">
+          <button 
+            className={`country-btn ${currentSlide === 0 ? 'active' : ''}`}
+            onClick={() => handleManualNavigation(0)}
+          >
+            North America
+          </button>
+          <button 
+            className={`country-btn ${currentSlide === 1 ? 'active' : ''}`}
+            onClick={() => handleManualNavigation(1)}
+          >
+            Canada
+          </button>
+          <button 
+            className={`country-btn ${currentSlide === 2 ? 'active' : ''}`}
+            onClick={() => handleManualNavigation(2)}
+          >
+            Asia
+          </button>
+          <button 
+            className={`country-btn ${currentSlide === 3 ? 'active' : ''}`}
+            onClick={() => handleManualNavigation(3)}
+          >
+            South America
+          </button>
+        </div>
+        
+        <div className="locations-carousel">
+          <motion.div 
+            className="carousel-slide"
+            key={currentSlide}
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -100 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+          >
+            <div className="location-section">
+              <div className="offices-grid">
+                {currentSlide === 0 && (
+                  <>
+                    <div className="office">
+                      <h4>Albany, NY</h4>
+                      <p>90 State St, Suite 700<br />Albany, NY - 12207</p>
+                    </div>
+                    <div className="office">
+                      <h4>Colorado Springs, CO</h4>
+                      <p>1155 Kelly Johnson Blvd, Suite 111<br />Colorado Springs, CO - 80920</p>
+                    </div>
+                    <div className="office">
+                      <h4>San Ramon, CA</h4>
+                      <p>4000 Bishop Drive<br />San Ramon, CA - 94583</p>
+                    </div>
+                  </>
+                )}
+                {currentSlide === 1 && (
+                  <div className="office">
+                    <h4>Mississauga, Ontario</h4>
+                    <p>100 Traders Blvd E, Suite 200<br />Canada - L4Z 2H7</p>
+                  </div>
+                )}
+                {currentSlide === 2 && (
+                  <div className="office">
+                    <h4>Chennai, India</h4>
+                    <p className="registered">Registered Office</p>
+                    <p>No.2008, Z Block, 2nd Street,<br />13th Main Road, Shanthi Colony,<br />Anna Nagar, Chennai 600 040</p>
+                  </div>
+                )}
+                {currentSlide === 3 && (
+                  <div className="office">
+                    <h4>Brazil</h4>
+                    <p>Themesoft Inc. - Tecnologia Eireli<br />Avenida Paulista, 2028, Conj. 111<br />Consolação, Bela Vista<br />São Paulo, SP, CEP 01310-200</p>
+                  </div>
+                )}
               </div>
             </div>
-          </div>
+          </motion.div>
+        </div>
 
-          <div className="location-section">
-            <h3>Canada</h3>
-            <div className="offices-grid">
-              <div className="office">
-                <h4>Mississauga, Ontario</h4>
-                <p>100 Traders Blvd E, Suite 200<br />Canada - L4Z 2H7</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="location-section">
-            <h3>Asia</h3>
-            <div className="offices-grid">
-              <div className="office">
-                <h4>Chennai, India</h4>
-                <p className="registered">Registered Office</p>
-                <p>No.2008, Z Block, 2nd Street,<br />13th Main Road, Shanthi Colony,<br />Anna Nagar, Chennai 600 040</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="location-section">
-            <h3>South America</h3>
-            <div className="offices-grid">
-              <div className="office">
-                <h4>Brazil</h4>
-                <p>Themesoft Inc. - Tecnologia Eireli<br />Avenida Paulista, 2028, Conj. 111<br />Consolação, Bela Vista<br />São Paulo, SP, CEP 01310-200</p>
-              </div>
-            </div>
-          </div>
+        <div className="carousel-dots">
+          {[0, 1, 2, 3].map((index) => (
+            <button
+              key={index}
+              className={`carousel-dot ${currentSlide === index ? 'active' : ''}`}
+              onClick={() => handleManualNavigation(index)}
+            />
+          ))}
         </div>
       </motion.div>
 

@@ -306,10 +306,10 @@
 .locations-title {
     position: relative;
     z-index: 1;
-    font-size: 3.5rem;
-    font-weight: 700;
+    font-size: 3rem;
+    font-weight: 600;
     text-align: center;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
     color: #ffffff;
     line-height: 1.2;
 }
@@ -327,65 +327,213 @@
 }
 
 .office {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.office:hover {
-    background: rgba(255, 255, 255, 0.15);
-    border-color: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .office h4 {
-    color: #ffffff;
+    color: rgb(147, 197, 253);
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    position: relative;
+    padding-bottom: 0.75rem;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.office h4::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 2px;
+    background: rgba(147, 197, 253, 0.3);
 }
 
 .office p {
     color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    font-size: 1.125rem;
+    margin: 0;
+    text-align: center;
 }
 
 .office .registered {
-    color: #ffffff;
-    background: rgba(255, 255, 255, 0.1);
+    color: rgb(147, 197, 253);
+    font-weight: 500;
+    font-size: 1rem;
+    margin: 1rem 0;
+    display: inline-block;
 }
 
-/* Mobile Styles */
+.offices-grid {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 3rem auto;
+    gap: 4rem;
+    padding: 0 2rem;
+}
+
+.locations-carousel {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+    perspective: 1000px;
+    padding: 2rem;
+}
+
+.country-nav {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 0 1rem;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 2;
+}
+
+.country-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    padding: 0.75rem 1.5rem;
+    font-size: 1.125rem;
+    font-weight: 500;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.country-btn.active {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.country-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40%;
+    height: 2px;
+    background: rgb(147, 197, 253);
+}
+
+@media (max-width: 1200px) {
+    .offices-grid {
+        flex-direction: column;
+        gap: 3rem;
+    }
+}
+
 @media (max-width: 768px) {
-    .locations-title {
-        font-size: 2.5rem;
-        margin-bottom: 3rem;
+    .offices-grid {
+        flex-direction: column;
+        gap: 3rem;
+        padding: 0 1rem;
     }
 
-    .location-section h3 {
-        font-size: 1.75rem;
-        margin-bottom: 1.5rem;
+    .locations-carousel {
+        padding: 1rem;
+    }
+}
+
+/* Remove any remaining card-specific styles */
+.office::before,
+.office:hover::before,
+.office:hover {
+    display: none;
+    transform: none;
+    background: none;
+    box-shadow: none;
+    border: none;
+}
+
+/* Carousel Styles */
+.carousel-slide {
+    flex: 1;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    width: 100%;
+}
+
+.location-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Remove carousel-nav styles since we're not using them anymore */
+.carousel-nav {
+    display: none;
+}
+
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 2rem;
+    z-index: 10;
+}
+
+/* Update mobile styles */
+@media (max-width: 768px) {
+    .locations-carousel {
+        min-height: 300px;
+        padding: 0 1rem;
     }
 
-    .office {
-        padding: 1.5rem;
+    .carousel-slide {
+        height: auto;
+    }
+}
+
+/* Remove the old section-headers styles since we're not using them anymore */
+.section-headers,
+.section-title {
+    display: none;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 1024px) {
+    .contact-content {
+        gap: 40px;
     }
 
-    .office h4 {
-        font-size: 1.25rem;
-    }
-
-    .office p {
-        font-size: 1rem;
-        line-height: 1.6;
-    }
-
-    .locations-grid {
-        padding: 0 1.5rem;
+    .contact-title {
+        font-size: 3.5rem;
     }
 }
 
 @media (max-width: 768px) {
     .contact-container {
         padding: 80px 20px;
-        margin-top: -40px;
     }
 
     .contact-content {
@@ -403,123 +551,40 @@
     }
 
     .contact-subtitle {
-        font-size: 1.125rem;
-        margin: 0 auto;
+        text-align: center;
     }
 
     .contact-form {
-        padding: 32px 24px;
+        padding: 30px;
     }
 }
 
-.locations-grid {
-    position: relative;
-    z-index: 2;
-    width: 100%;
-    max-width: 1200px;
-    padding: 0 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
-}
-
-.location-section {
-    width: 100%;
-    margin-bottom: 2rem;
-}
-
-.location-section h3 {
-    font-size: 2.25rem;
-    font-weight: 600;
-    margin-bottom: 2rem;
-    position: relative;
-    padding-bottom: 0.75rem;
-    letter-spacing: -0.02em;
-}
-
-.location-section h3::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 2rem;
-    height: 4px;
-    border-radius: 2px;
-}
-
-.location-section h3::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 2.25rem;
-    width: 4rem;
-    height: 4px;
-    border-radius: 2px;
-}
-
-.offices-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-}
-
-.office {
-    padding: 2rem;
-    border-radius: 16px;
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    overflow: hidden;
-}
-
-.office h4 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    letter-spacing: -0.01em;
-}
-
-.office p {
-    font-size: 1.125rem;
-    line-height: 1.7;
-    margin: 0.75rem 0;
-}
-
-.office .registered {
-    font-size: 1rem;
-    font-weight: 500;
-    margin-bottom: 0.75rem;
-    display: inline-block;
-    padding: 0.25rem 0.75rem;
-    border-radius: 20px;
-}
-
-@media (max-width: 768px) {
-    .locations-grid {
-        padding: 0 1.5rem;
-        gap: 2rem;
+@media (max-width: 480px) {
+    .contact-container {
+        padding: 60px 16px;
     }
 
-    .location-section {
-        margin-bottom: 1.5rem;
+    .contact-title {
+        font-size: 2.5rem;
     }
 
-    .offices-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
+    .contact-subtitle {
+        font-size: 1.125rem;
     }
 
-    .office {
-        padding: 1.5rem;
+    .contact-form {
+        padding: 24px;
+        gap: 16px;
     }
 
-    .office h4 {
-        font-size: 1.25rem;
-        margin-bottom: 0.75rem;
+    .contact-form input,
+    .contact-form textarea {
+        padding: 12px;
+        font-size: 0.9375rem;
     }
 
-    .office p {
+    .contact-submit-btn {
+        padding: 14px 24px;
         font-size: 1rem;
-        line-height: 1.6;
-        margin: 0.5rem 0;
     }
 }
