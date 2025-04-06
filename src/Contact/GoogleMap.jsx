@@ -92,20 +92,20 @@ const mapOptions = {
 };
 
 const GoogleMapComponent = () => {
-  const [zoom, setZoom] = useState(3); // Start zoomed out at US level
+  const [zoom, setZoom] = useState(8); // Start zoomed out at US level
   const [map, setMap] = useState(null); // Store the map instance
 
   useEffect(() => {
     if (map) {
-      let currentZoom = 3;
+      let currentZoom = 8;
       const zoomInterval = setInterval(() => {
         if (currentZoom < 15) {
-          currentZoom += 0.5; // Smoothly increase zoom level
+          currentZoom += 0.8; // Smoothly increase zoom level
           map.setZoom(currentZoom);
         } else {
           clearInterval(zoomInterval);
         }
-      }, 200); // Step zoom every 200ms (2 seconds total)
+      }, 100); // Step zoom every 200ms (2 seconds total)
     }
   }, [map]);
 

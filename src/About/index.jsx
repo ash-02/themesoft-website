@@ -134,7 +134,6 @@ const About = () => {
 
       <section className="map">
         <div className="meteor-container">
-          {/* Right side meteors */}
           <div className="meteor"></div>
           <div className="meteor"></div>
           <div className="meteor"></div>
@@ -143,7 +142,6 @@ const About = () => {
           <div className="meteor"></div>
           <div className="meteor"></div>
           <div className="meteor"></div>
-          {/* Left side meteors */}
           <div className="meteor from-left"></div>
           <div className="meteor from-left"></div>
           <div className="meteor from-left"></div>

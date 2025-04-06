@@ -15,17 +15,11 @@ const Footer = () => {
             Empowering businesses through innovative digital solutions and transformative technology services.
           </p>
           <div className="social-media-buttons">
-            <a href="#" aria-label="LinkedIn" className="social-link">
+            <a href="https://www.linkedin.com/company/themesoft-inc./" aria-label="LinkedIn" className="social-link" target="_blank" rel="noopener noreferrer">
               <i className="fab fa-linkedin-in"></i>
             </a>
-            <a href="#" aria-label="Twitter" className="social-link">
-              <i className="fab fa-twitter"></i>
-            </a>
-            <a href="#" aria-label="Facebook" className="social-link">
-              <i className="fab fa-facebook-f"></i>
-            </a>
-            <a href="#" aria-label="Instagram" className="social-link">
-              <i className="fab fa-instagram"></i>
+            <a href="https://x.com/themesoftinc" aria-label="X (Twitter)" className="social-link" target="_blank" rel="noopener noreferrer">
+              <i className="fab fa-x-twitter"></i>
             </a>
           </div>
         </div>
@@ -36,9 +30,10 @@ const Footer = () => {
             <ul className="footer-links">
               <li><Link to="/workforce-solutions">Workforce Solutions</Link></li>
               <li><Link to="/industries">Industries</Link></li>
-              <li><Link to="/ai-solutions">Artificial Intelligence</Link></li>
-              <li><Link to="/cyber-security">Cyber Security</Link></li>
-              <li><Link to="/cloud-services">Cloud Services</Link></li>
+              <li><Link to="/expertise/artificial-intelligence">Artificial Intelligence</Link></li>
+              <li><Link to="/expertise/cyber-security">Cyber Security</Link></li>
+              <li><Link to="/expertise/cloud-and-data-services">Cloud Services</Link></li>
+              <li><Link to="/expertise/software-consulting">Software Consulting</Link></li>
             </ul>
           </div>
 
@@ -48,11 +43,10 @@ const Footer = () => {
               <li><Link to="/about">About Us</Link></li>
               <li><Link to="/careers">Careers</Link></li>
               <li><Link to="/contact">Contact</Link></li>
-              <li><Link to="/blog">Blog</Link></li>
             </ul>
           </div>
 
-          <div className="footer-section">
+          {/* <div className="footer-section">
             <h3 className="footer-heading">Legal</h3>
             <ul className="footer-links">
               <li><Link to="/privacy">Privacy Policy</Link></li>
@@ -60,7 +54,7 @@ const Footer = () => {
               <li><Link to="/security">Security</Link></li>
               <li><Link to="/compliance">Compliance</Link></li>
             </ul>
-          </div>
+          </div> */}
 
           <div className="footer-section contact-section">
             <h3 className="footer-heading">Contact Us</h3>

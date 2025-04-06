@@ -9,7 +9,7 @@ const fadeIn = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.8, ease: "easeOut", delay: 1.5 },
+    transition: { duration: 0.8, ease: "easeOut", delay: 1 },
   },
 };
 

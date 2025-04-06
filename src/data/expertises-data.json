@@ -1,0 +1,106 @@
+{
+  "artificial-intelligence": {
+    "title": "Artificial Intelligence",
+    "subtitle": "AI: Transforming Tomorrow, Today",
+    "description": "Is your business built on work that is repetitive and somehow quality assessment doesn't follow a predictable trend? Automation and Focused AI will save you money and precious time.",
+    "backgroundImage": "/images/ai-background.jpg",
+    "features": [
+      {
+        "id": 1,
+        "icon": "🤖",
+        "title": "Machine Learning",
+        "description": "Data-driven decisions for a smarter tomorrow. Turning data into insights, one algorithm at a time."
+      },
+      {
+        "id": 2,
+        "icon": "🧠",
+        "title": "Deep Learning",
+        "description": "Unlocking the potential of neural networks. Diving deep into data for transformative insights."
+      },
+      {
+        "id": 3,
+        "icon": "⚙️",
+        "title": "Robotics and Automation",
+        "description": "Efficiency unleashed: Robotics and Automation. From assembly lines to autonomous systems. Robotics revolutionizes industry. Building the future, one robot at a time."
+      }
+    ]
+  },
+  "cyber-security": {
+    "title": "Cyber Security",
+    "subtitle": "Prioritize Security Today for a Safer Tomorrow: Cybersecurity Matters",
+    "description": "Make your product's security as bulletproof as the amazing project you're working on. Prevention beats cure time after time and we at Themesoft understand the responsibility our clients place in our hands.",
+    "backgroundImage": "/images/security-background.jpg",
+    "features": [
+      {
+        "id": 1,
+        "icon": "🌐",
+        "title": "Network Security",
+        "description": "Our Goal is to fortifying digital pathways, safeguarding against cyber threats to protect data and systems."
+      },
+      {
+        "id": 2,
+        "icon": "🔒",
+        "title": "Information and Application Security",
+        "description": "Both are essential components of a comprehensive cybersecurity strategy aimed at mitigating risks and ensuring the overall integrity and security of digital assets."
+      },
+      {
+        "id": 3,
+        "icon": "🛡️",
+        "title": "Security Awareness Training",
+        "description": "Our intensive training educates on security threats, best practices, and response procedures to mitigate risks, fostering a security-conscious culture within the organization."
+      }
+    ]
+  },
+  "cloud-and-data-services": {
+    "title": "Cloud And Data Services",
+    "subtitle": "Seize the world through the power of the cloud",
+    "description": "Access your entire infrastructure comfortably through your own personal computer. Lightweight and reliable migration from us can help you advance your present cloud database or introduce you to some of it's advantages.",
+    "backgroundImage": "/images/cloud-background.jpg",
+    "features": [
+      {
+        "id": 1,
+        "icon": "☁️",
+        "title": "Transitioning to Cloud Computing and Migration",
+        "description": "Assisting our clients in transitioning to cloud computing entails the migration of their data, applications, and infrastructure to cloud-based services."
+      },
+      {
+        "id": 2,
+        "icon": "💻",
+        "title": "Software as a service(SaaS)",
+        "description": "Utilizing a proven Software as a Service (SaaS) solution can accelerate time to market, swiftly delivering business value throughout the enterprise."
+      },
+      {
+        "id": 3,
+        "icon": "🔐",
+        "title": "Data, Cloud Security and Administration",
+        "description": "Cloud security safeguards data and infrastructure, while administration manages resources efficiently. Both are essential for smooth cloud operations."
+      }
+    ]
+  },
+  "software-consulting": {
+    "title": "Software Consulting",
+    "subtitle": "You might just be one move away from technological disruption",
+    "description": "Have a dream of revolutionizing the future? A truly disruptive idea that could change life as we know it? Work with a team of dedicated professionals that can meet those expectations.",
+    "backgroundImage": "/images/consulting-background.jpg",
+    "features": [
+      {
+        "id": 1,
+        "icon": "💻",
+        "title": "Software Development and Technology Consulting",
+        "description": "As consultants, we help clients with requirements analysis, architecture design, coding standards, and best practices. Technology consultants also advise on selecting the right technologies, including languages, frameworks, and databases."
+      },
+      {
+        "id": 2,
+        "icon": "🔄",
+        "title": "Cloud and Digital Transformation Consulting",
+        "description": "Cloud consultants drive business transformations through strategy, migration, innovation, security, and optimization, enhancing operations, customer experiences, and competitiveness."
+      },
+      {
+        "id": 3,
+        "icon": "📊",
+        "title": "Project Management and Data Analytics Consulting",
+        "description": "Combining project management with data analytics consulting enhances decision-making, planning, monitoring, and continuous improvement in projects."
+      }
+    ]
+  }
+} 

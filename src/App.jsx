@@ -7,6 +7,7 @@ import WorkforceSolutions from './WorkforceSolutions/index.jsx'
 import Industries from './Industries/index.jsx'
 import About from './About/index.jsx'
 import Contact from './Contact/index.jsx'
+import Expertise from './Expertises/index.jsx'
 import './App.css'
 
 // ScrollToTop component to handle scroll position
@@ -32,6 +33,7 @@ function App() {
           <Route path="/industries" element={<Industries />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/expertise/:expertiseSlug" element={<Expertise />} />
           {/* Add more routes as needed */}
         </Routes>
         <Footer />
