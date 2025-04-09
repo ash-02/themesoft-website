@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import GoogleMapComponent from "./GoogleMap";
 import "./index.css";
 import Stamp from "../assets/stamp.png";
+import WorldMap from "../assets/World Map.svg";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -130,6 +131,7 @@ const ContactUs = () => {
         animate="visible"
         variants={fadeIn}
       >
+        <img src={WorldMap} alt="World Map" className="world-map-bg" />
         <h2 className="locations-title">Global Locations</h2>
         
         <div className="country-nav">

@@ -1,4 +1,5 @@
-/* Contact Page Layout */
+@import url('https://api.fontshare.com/v2/css?f[]=clash-display@600,700,400&display=swap');
+
 .contact-container {
     display: flex;
     align-items: center;
@@ -130,8 +131,8 @@
     z-index: 1;
 }
 
-/* Address Container */
 .address-container {
+    font-family: 'Clash Display', sans-serif;
     position: absolute;
     display: flex;
     flex-direction: row;
@@ -155,7 +156,6 @@
     display: none;
 }
 
-/* Address Content */
 .address-content {
     width: 100%;
     font-size: 1rem;
@@ -164,7 +164,7 @@
     flex-direction: column;
     gap: 0.25rem;
     text-align: left;
-    font-family: "Montserrat", sans-serif;
+    /* font-family: "Montserrat", sans-serif; */
 }
 
 .office-title {
@@ -179,7 +179,6 @@
 
 .address-content p {
     font-size: 1.25rem;
-    line-height: 1.6;
     margin: 0;
     color: #374151;
 }
@@ -254,6 +253,18 @@
     overflow: hidden;
 }
 
+.world-map-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1400px;
+    height: 800px;
+    object-fit: contain;
+    opacity: 0.3;
+    z-index: 0;
+}
+
 .global-locations::before {
     content: '';
     position: absolute;
@@ -267,6 +278,7 @@
         radial-gradient(circle at 40% 70%, rgba(255, 255, 255, 0.025) 0, transparent 29%),
         radial-gradient(circle at 70% 80%, rgba(255, 255, 255, 0.025) 0, transparent 29%);
     animation: slowRotate 30s linear infinite;
+    z-index: 1;
 }
 
 .global-locations::after {
@@ -283,6 +295,7 @@
         radial-gradient(3px 3px at 80% 20%, rgba(255, 255, 255, 0.15) 50%, transparent 50%);
     background-size: 150px 150px;
     animation: particleFloat 20s ease-in-out infinite alternate;
+    z-index: 1;
 }
 
 @keyframes slowRotate {
@@ -305,13 +318,12 @@
 
 .locations-title {
     position: relative;
-    z-index: 1;
-    font-size: 3rem;
-    font-weight: 600;
+    z-index: 2;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
     text-align: center;
-    margin-bottom: 3rem;
     color: #ffffff;
-    line-height: 1.2;
 }
 
 .location-section h3 {
@@ -327,9 +339,10 @@
 }
 
 .office {
+    position: relative;
+    z-index: 2;
     text-align: center;
     width: 100%;
-    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -586,5 +599,19 @@
     .contact-submit-btn {
         padding: 14px 24px;
         font-size: 1rem;
+    }
+}
+
+@media (max-width: 1440px) {
+    .world-map-bg {
+        width: 1200px;
+        height: 700px;
+    }
+}
+
+@media (max-width: 768px) {
+    .world-map-bg {
+        width: 900px;
+        height: 500px;
     }
 }

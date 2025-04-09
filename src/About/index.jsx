@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import './index.css'
-import tsLogo from "../assets/ts_logo.png"
+import companyLogo from "../assets/LogoMain/Company_Logo_Cropped.png"
 
 const About = () => {
   const obs = useRef()
@@ -141,12 +141,13 @@ const About = () => {
               <div className="place" style={{'--delay': '0.4s'}}>India</div>
               <div className="place" style={{'--delay': '0.6s'}}>Brazil</div>
               <div className="place" style={{'--delay': '0.8s'}}>
-                <img src={tsLogo} style={{
-                  width: '100%',
-                  maxWidth: '200px',
+                <img src={companyLogo} style={{
+                  width: 'auto',
+                  maxWidth: '100px',
                   height: 'auto',
                   display: 'block',
-                  margin: '0 auto'
+                  margin: '0 auto',
+                  opacity: '0.9'
                 }} />
               </div>
             </div>
