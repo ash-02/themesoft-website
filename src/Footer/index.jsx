@@ -83,9 +83,9 @@ const Footer = () => {
             © {new Date().getFullYear()} ThemeSoft Inc. All rights reserved.
           </p>
           <div className="footer-bottom-links">
-            <Link to="/privacy">Privacy</Link>
-            <Link to="/terms">Terms</Link>
-            <Link to="/cookies">Cookies</Link>
+            <Link to="#">Privacy</Link>
+            <Link to="#">Terms</Link>
+            <Link to="#">Cookies</Link>
           </div>
         </div>
       </div>
