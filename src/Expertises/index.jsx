@@ -42,12 +42,6 @@ const Expertises = () => {
       </div>
       <div className={`expertisesContainer ${isVisible ? 'visible' : ''}`}>
         <section className="expertisesHero">
-          {/* <div className="brainIconWrapper">
-            <svg className="expertisesBrainIcon" viewBox="0 0 512 512">
-              <path d="M256,32C132.3,32,32,132.3,32,256s100.3,224,224,224s224-100.3,224-224S379.7,32,256,32z
-                       M256,450.5c-107.4,0-194.5-87.1-194.5-194.5S148.6,61.5,256,61.5S450.5,148.6,450.5,256S363.4,450.5,256,450.5z" />
-            </svg>
-          </div> */}
           <h1 className="expertisesTitle">{expertiseData.title}</h1>
           <h2 className="expertisesSubtitle">{expertiseData.subtitle}</h2>
           <p className="expertisesDescription">
@@ -71,25 +65,23 @@ const Expertises = () => {
           ))}
         </section>
 
-        <section className="expertisesBottomSections">
-          <div className="relatedServices">
-            <h3 className="expertisesSectionTitle">Related Services</h3>
-            <ul className="expertisesList">
-              {Object.keys(expertisesData)
-                .filter(key => key !== expertiseSlug)
-                .map((key) => (
-                  <li key={key}>
-                    <a 
-                      href={`/expertise/${key}`}
-                      onClick={handleRelatedServiceClick(key)}
-                      className="expertisesLink"
-                    >
-                      {expertisesData[key].title}
-                    </a>
-                  </li>
-                ))}
-            </ul>
-          </div>
+        <section className="relatedServices">
+          <h3 className="expertisesSectionTitle">Related Services</h3>
+          <ul className="expertisesList">
+            {Object.keys(expertisesData)
+              .filter(key => key !== expertiseSlug)
+              .map((key) => (
+                <li key={key}>
+                  <a 
+                    href={`/expertise/${key}`}
+                    onClick={handleRelatedServiceClick(key)}
+                    className="expertisesLink"
+                  >
+                    {expertisesData[key].title}
+                  </a>
+                </li>
+              ))}
+          </ul>
         </section>
       </div>
     </>

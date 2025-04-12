@@ -454,7 +454,6 @@
   right: 0;
 }
 
-/* Desktop hover animations */
 @media (min-width: 769px) {
   .industry-card:hover .meteor {
     opacity: 0;
@@ -489,7 +488,6 @@
   }
 }
 
-/* Mobile animations - only for cards in view */
 @media (max-width: 768px) {
   .industry-card .meteor {
     opacity: 0;
@@ -565,7 +563,6 @@
     opacity: 0.7;
   }
   
-  /* Smooth transition for cards entering/leaving the center viewport */
   .industry-card.in-view {
     transform: scale(1) translateY(-5px);
     opacity: 1;
@@ -591,7 +588,6 @@
     transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  /* Meteor animations for in-view cards */
   .industry-card.in-view .meteor {
     animation-play-state: running;
   }
@@ -600,7 +596,6 @@
     animation-play-state: paused;
   }
 
-  /* Ripple effect for in-view cards */
   .industry-card.in-view::before {
     animation: rippleEffect 1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   }

@@ -94,14 +94,12 @@ const Industries = () => {
       const observer = new IntersectionObserver(
         ([entry]) => {
           if (entry.isIntersecting) {
-            // Only apply center detection on mobile screens
             if (window.innerWidth <= 768) {
               const rect = entry.target.getBoundingClientRect();
               const viewportHeight = window.innerHeight;
               const viewportCenter = viewportHeight / 2;
               const elementCenter = rect.top + (rect.height / 2);
               
-              // Tighter threshold for center detection (100px instead of 150px)
               const isInCenter = Math.abs(elementCenter - viewportCenter) < 100;
               
               if (isInCenter) {
@@ -110,7 +108,6 @@ const Industries = () => {
                 entry.target.classList.remove('in-view');
               }
             } else {
-              // On desktop, remove the in-view class to allow normal hover behavior
               entry.target.classList.remove('in-view');
             }
           } else {
@@ -118,8 +115,8 @@ const Industries = () => {
           }
         },
         {
-          threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1], // More thresholds for smoother detection
-          rootMargin: '-5% 0px' // Smaller margin for more precise detection
+          threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
+          rootMargin: '-5% 0px'
         }
       );
 
@@ -127,7 +124,6 @@ const Industries = () => {
       if (currentCard) {
         observer.observe(currentCard);
         
-        // Throttled scroll handler for better performance
         let ticking = false;
         const handleScroll = () => {
           if (!ticking && window.innerWidth <= 768) {
@@ -151,7 +147,6 @@ const Industries = () => {
 
         window.addEventListener('scroll', handleScroll, { passive: true });
         
-        // Also handle resize events to toggle between mobile and desktop behavior
         const handleResize = () => {
           if (window.innerWidth > 768) {
             currentCard.classList.remove('in-view');

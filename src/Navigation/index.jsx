@@ -13,7 +13,8 @@ const Index = () => {
                         location.pathname === '/industries' ||
                         location.pathname === '/about' ||
                         location.pathname === '/careers' ||
-                        location.pathname === '/contact';
+                        location.pathname === '/contact' ||
+                        location.pathname === '/supplier-diversity';
 
   useEffect(() => {
     const handleScroll = () => {

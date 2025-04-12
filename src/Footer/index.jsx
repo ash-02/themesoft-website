@@ -41,6 +41,7 @@ const Footer = () => {
             <h3 className="footer-heading">Company</h3>
             <ul className="footer-links">
               <li><Link to="/about">About Us</Link></li>
+              <li><Link to="/supplier-diversity">Supplier Diversity</Link></li>
               <li><Link to="/careers">Careers</Link></li>
               <li><Link to="/contact">Contact</Link></li>
             </ul>

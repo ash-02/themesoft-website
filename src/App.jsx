@@ -8,9 +8,9 @@ import Industries from './Industries/index.jsx'
 import About from './About/index.jsx'
 import Contact from './Contact/index.jsx'
 import Expertise from './Expertises/index.jsx'
+import Certifications from './Diversity/index.jsx'
 import './App.css'
 
-// ScrollToTop component to handle scroll position
 function ScrollToTop() {
   const { pathname } = useLocation()
 
@@ -34,7 +34,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/expertise/:expertiseSlug" element={<Expertise />} />
-          {/* Add more routes as needed */}
+          <Route path="/supplier-diversity" element={<Certifications />} />
         </Routes>
         <Footer />
       </div>

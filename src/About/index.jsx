@@ -3,50 +3,49 @@ import './index.css'
 import companyLogo from "../assets/LogoMain/Company_Logo_Cropped.png"
 
 const About = () => {
-  const obs = useRef()
+  const intersectionObserver = useRef()
 
   useEffect(() => {
-    obs.current = new IntersectionObserver(entries => {
+    intersectionObserver.current = new IntersectionObserver(entries => {
       entries.forEach(e => e.isIntersecting && e.target.classList.add('animate'))
     }, { threshold: 0.1 })
 
-    document.querySelectorAll('.fade-in').forEach(el => obs.current.observe(el))
-    return () => obs.current.disconnect()
+    document.querySelectorAll('.fade-in').forEach(el => intersectionObserver.current.observe(el))
+    return () => intersectionObserver.current.disconnect()
   }, [])
 
   return (
     <div className="about-container">
-      <section className="top">
-        <div className="bg">
-          {/* <div className="overlay" /> */}
-          <div className="img" />
+      <section className="about-hero">
+        <div className="about-hero-bg">
+          <div className="about-hero-image" />
         </div>
-        <div className="main fade-in">
+        <div className="about-hero-content fade-in">
           <h1>
-            <span className="grad-txt">Transforming</span>
+            <span className="gradient-text">Transforming</span>
             <br />
             Digital Future
           </h1>
           <p>Empowering businesses through innovative technology solutions</p>
-          <div className="nums">
-            <div className="num-box">
-              <span className="big-num">20+</span>
-              <span className="num-txt">Years Experience</span>
+          <div className="about-stats">
+            <div className="about-stat-box">
+              <span className="about-stat-number">20+</span>
+              <span className="about-stat-text">Years Experience</span>
             </div>
-            <div className="num-box">
-              <span className="big-num">1000+</span>
-              <span className="num-txt">Team Members</span>
+            <div className="about-stat-box">
+              <span className="about-stat-number">1000+</span>
+              <span className="about-stat-text">Team Members</span>
             </div>
-            <div className="num-box">
-              <span className="big-num">9</span>
-              <span className="num-txt">Global Offices</span>
+            <div className="about-stat-box">
+              <span className="about-stat-number">9</span>
+              <span className="about-stat-text">Global Offices</span>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="abt">
-        <div className="card fade-in">
+      <section className="about-who">
+        <div className="about-card fade-in">
           <h2 data-text="Who We Are">Who We Are</h2>
           <p>
             ThemeSoft is a Dallas-based Woman Owned Minority Business Enterprise with global reach.
@@ -54,20 +53,20 @@ const About = () => {
             delivering cutting-edge solutions in banking, healthcare, manufacturing, and more.
           </p>
         </div>
-        <div className="blobs">
-          <div className="b1" />
-          <div className="b2" />
-          <div className="b3" />
+        <div className="about-blobs">
+          <div className="about-blob-1" />
+          <div className="about-blob-2" />
+          <div className="about-blob-3" />
         </div>
       </section>
 
-      <section className="vals">
-        <div className="vals-background">
-          <div className="gradient-sphere"></div>
-          <div className="grid-pattern"></div>
+      <section className="about-values">
+        <div className="about-values-bg">
+          <div className="about-values-sphere"></div>
+          <div className="about-values-grid"></div>
         </div>
 
-        <div className="vals-container">
+        <div className="about-values-container">
           {[
             {
               title: "People First",
@@ -96,7 +95,7 @@ const About = () => {
           ].map((value, index) => (
             <div 
               key={index} 
-              className="vals-card"
+              className="about-value-card"
               style={{ 
                 '--delay': `${value.delay}ms`,
                 '--accent-color': value.color
@@ -106,57 +105,37 @@ const About = () => {
               <p>{value.description}</p>
             </div>
           ))}
-          <div className="center-circle">
+          <div className="about-values-center">
             <h2>Our Core Values</h2>
           </div>
         </div>
       </section>
 
-      <section className="map">
-        <div className="meteor-container">
-          <div className="meteor"></div>
-          <div className="meteor"></div>
-          <div className="meteor"></div>
-          <div className="meteor"></div>
-          <div className="meteor"></div>
-          <div className="meteor"></div>
-          <div className="meteor"></div>
-          <div className="meteor"></div>
-          <div className="meteor from-left"></div>
-          <div className="meteor from-left"></div>
-          <div className="meteor from-left"></div>
-          <div className="meteor from-left"></div>
-          <div className="meteor from-left"></div>
-          <div className="meteor from-left"></div>
-          <div className="meteor from-left"></div>
-          <div className="meteor from-left"></div>
-        </div>
-        <div className="map-content fade-in">
+      <section className="about-global">
+        {/* <div className="about-meteors">
+          {[...Array(16)].map((_, i) => (
+            <div key={i} className={`about-meteor ${i >= 8 ? 'from-left' : ''}`} />
+          ))}
+        </div> */}
+        <div className="about-global-content fade-in">
           <h2 data-text="Global Presence">Global Presence</h2>
-          <div className="globe-wrap">
-            <div className="globe" />
-            <div className="places">
-              <div className="place" style={{'--delay': '0s'}}>United States</div>
-              <div className="place" style={{'--delay': '0.2s'}}>Canada</div>
-              <div className="place" style={{'--delay': '0.4s'}}>India</div>
-              <div className="place" style={{'--delay': '0.6s'}}>Brazil</div>
-              <div className="place" style={{'--delay': '0.8s'}}>
-                <img src={companyLogo} style={{
-                  width: 'auto',
-                  maxWidth: '100px',
-                  height: 'auto',
-                  display: 'block',
-                  margin: '0 auto',
-                  opacity: '0.9'
-                }} />
+          <div className="about-globe-wrap">
+            <div className="about-globe" />
+            <div className="about-locations">
+              <div className="about-location" style={{'--delay': '0s'}}>United States</div>
+              <div className="about-location" style={{'--delay': '0.2s'}}>Canada</div>
+              <div className="about-location" style={{'--delay': '0.4s'}}>India</div>
+              <div className="about-location" style={{'--delay': '0.6s'}}>Brazil</div>
+              <div className="about-location" style={{'--delay': '0.8s'}}>
+                <img src={companyLogo} alt="ThemeSoft Logo" className="about-logo" />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="quote fade-in">
-        <div className="quote-box">
+      <section className="about-quote fade-in">
+        <div className="about-quote-box">
           <blockquote>
             "People ask the difference between a leader and a boss. The leader leads, and the boss drives."
             <cite>— Theodore Roosevelt</cite>

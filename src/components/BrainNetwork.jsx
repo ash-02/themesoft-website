@@ -3,7 +3,6 @@ import React from 'react';
 const BrainNetwork = () => {
   return (
     <svg className="brain-network" viewBox="0 0 500 500">
-      {/* Brain outline */}
       <path
         className="brain-outline"
         d="M250 100 C 400 100, 400 400, 250 400 C 100 400, 100 100, 250 100"
@@ -12,7 +11,6 @@ const BrainNetwork = () => {
         strokeWidth="2"
       />
       
-      {/* Network nodes */}
       <g className="nodes">
         {[
           [200, 150], [300, 150], [250, 200],
@@ -30,7 +28,6 @@ const BrainNetwork = () => {
         ))}
       </g>
 
-      {/* Network connections */}
       <g className="connections">
         <path d="M200 150 L250 200 L300 150" className="connection" />
         <path d="M180 250 L220 300 L280 300 L320 250" className="connection" />
@@ -38,7 +35,6 @@ const BrainNetwork = () => {
         <path d="M180 250 L250 200 L320 250" className="connection" />
       </g>
 
-      {/* Glowing effects */}
       <defs>
         <filter id="glow">
           <feGaussianBlur stdDeviation="2" result="coloredBlur"/>

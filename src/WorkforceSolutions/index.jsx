@@ -22,7 +22,7 @@ const ScrambleText = ({ finalText, isVisible }) => {
       setText(randomText);
     };
 
-    interval = setInterval(scramble, 50);
+    interval = setInterval(scramble, 30);
 
     setTimeout(() => {
       clearInterval(interval);

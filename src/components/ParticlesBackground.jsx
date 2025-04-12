@@ -10,13 +10,11 @@ const ParticlesBackground = () => {
     let animationFrameId;
     let particles = [];
 
-    // Set canvas size
     const setCanvasSize = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     };
 
-    // Create particle class
     class Particle {
       constructor() {
         this.x = Math.random() * canvas.width;
@@ -45,7 +43,6 @@ const ParticlesBackground = () => {
       }
     }
 
-    // Initialize particles
     const init = () => {
       particles = [];
       const numberOfParticles = Math.floor((canvas.width * canvas.height) / 8000);
@@ -54,7 +51,6 @@ const ParticlesBackground = () => {
       }
     };
 
-    // Animation loop
     const animate = () => {
       ctx.fillStyle = 'rgba(15, 20, 38, 0.1)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -64,7 +60,6 @@ const ParticlesBackground = () => {
         particle.draw();
       });
 
-      // Draw connections
       particles.forEach(particle => {
         particles.forEach(otherParticle => {
           const dx = particle.x - otherParticle.x;
@@ -85,13 +80,11 @@ const ParticlesBackground = () => {
       animationFrameId = requestAnimationFrame(animate);
     };
 
-    // Handle resize
     const handleResize = () => {
       setCanvasSize();
       init();
     };
 
-    // Initial setup
     setCanvasSize();
     init();
     animate();
