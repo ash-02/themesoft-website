@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import GoogleMapComponent from "./GoogleMap";
 import "./index.css";
 import Stamp from "../assets/stamp.png";
 import WorldMap from "../assets/World Map.svg";
+import Hexagon from "../assets/Hexagon.svg";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -14,10 +14,190 @@ const fadeIn = {
   },
 };
 
+const bannerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.3
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut"
+    }
+  }
+};
+
 const ContactUs = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const autoPlayDelay = 6000000;
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    let animationFrameId;
+    let waveParticles = [];
+    let scatterParticles = [];
+    let time = 0;
+
+    const initCanvas = () => {
+      const canvas = canvasRef.current;
+      if (!canvas) return null;
+
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return null;
+
+      canvas.width = canvas.offsetWidth || window.innerWidth;
+      canvas.height = canvas.offsetHeight || window.innerHeight;
+
+      return { canvas, ctx };
+    };
+
+    class WaveParticle {
+      constructor(canvas) {
+        this.x = Math.random() * canvas.width;
+        this.y = canvas.height / 2;
+        this.size = Math.random() * 4 + 2;
+        this.speed = Math.random() * 0.5 + 0.2;
+        this.opacity = Math.random() * 0.6 + 0.2;
+        this.amplitude = Math.random() * 50 + 50;
+        this.frequency = Math.random() * 0.01 + 0.01;
+        this.phase = Math.random() * Math.PI * 2;
+      }
+
+      update(canvas) {
+        this.x += this.speed;
+        if (this.x > canvas.width) this.x = 0;
+        
+        this.y = canvas.height / 2 + 
+                Math.sin(time * this.frequency + this.phase) * this.amplitude;
+      }
+
+      draw(ctx) {
+        ctx.fillStyle = `rgba(79, 70, 229, ${this.opacity})`;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    class ScatterParticle {
+      constructor(canvas) {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2 + 0.5;
+        this.speedX = (Math.random() - 0.5) * 0.3;
+        this.speedY = (Math.random() - 0.5) * 0.3;
+        this.opacity = Math.random() * 0.3 + 0.1;
+      }
+
+      update(canvas) {
+        this.x += this.speedX;
+        this.y += this.speedY;
+
+        if (this.x < 0) this.x = canvas.width;
+        if (this.x > canvas.width) this.x = 0;
+        if (this.y < 0) this.y = canvas.height;
+        if (this.y > canvas.height) this.y = 0;
+      }
+
+      draw(ctx) {
+        ctx.fillStyle = `rgba(79, 70, 229, ${this.opacity})`;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    const initParticles = (canvas) => {
+      waveParticles = [];
+      scatterParticles = [];
+      
+      const waveParticleCount = Math.floor(canvas.width / 5);
+      for (let i = 0; i < waveParticleCount; i++) {
+        waveParticles.push(new WaveParticle(canvas));
+      }
+
+      const scatterParticleCount = Math.floor((canvas.width * canvas.height) / 2000);
+      for (let i = 0; i < scatterParticleCount; i++) {
+        scatterParticles.push(new ScatterParticle(canvas));
+      }
+    };
+
+    const drawConnections = (particles, canvas, ctx) => {
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          
+          if (distance < 100) {
+            const opacity = 0.5 - distance/100;
+            ctx.strokeStyle = `rgba(79, 70, 229, ${opacity})`;
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+    };
+
+    const animate = () => {
+      const canvasSetup = initCanvas();
+      if (!canvasSetup) return;
+
+      const { canvas, ctx } = canvasSetup;
+      
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      scatterParticles.forEach(particle => {
+        particle.update(canvas);
+        particle.draw(ctx);
+      });
+
+      drawConnections(waveParticles, canvas, ctx);
+
+      waveParticles.forEach(particle => {
+        particle.update(canvas);
+        particle.draw(ctx);
+      });
+
+      time += 0.05;
+      animationFrameId = requestAnimationFrame(animate);
+    };
+
+    const handleResize = () => {
+      const canvasSetup = initCanvas();
+      if (canvasSetup) {
+        initParticles(canvasSetup.canvas);
+      }
+    };
+
+    const canvasSetup = initCanvas();
+    if (canvasSetup) {
+      initParticles(canvasSetup.canvas);
+      animate();
+      window.addEventListener('resize', handleResize);
+    }
+
+    return () => {
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     let autoPlayTimer;
@@ -91,22 +271,32 @@ const ContactUs = () => {
 
   return (
     <>
-      <div className="contact-map-section">
-        <div className="contact-map-wrapper">
-          <GoogleMapComponent />
-        </div>
+      <motion.div 
+        className="contact-map-section"
+        initial="hidden"
+        animate="visible"
+        variants={bannerVariants}
+      >
+        <canvas 
+          ref={canvasRef}
+          className="particles-canvas"
+        />
 
         <motion.div
           className="contact-address-card"
-          initial="hidden"
-          animate="visible"
-          variants={fadeIn}
+          variants={itemVariants}
         >
-          <motion.div className="contact-stamp-wrapper">
+          <motion.div 
+            className="contact-stamp-wrapper"
+            variants={itemVariants}
+          >
             <img src={Stamp} alt="Stamp" className="contact-stamp" />
           </motion.div>
 
-          <motion.div className="contact-address-details">
+          <motion.div 
+            className="contact-address-details"
+            variants={itemVariants}
+          >
             <h3 className="contact-hq-title">HEADQUARTERS</h3>
             <p>
               <strong>Address</strong><br />
@@ -122,7 +312,7 @@ const ContactUs = () => {
             </p>
           </motion.div>
         </motion.div>
-      </div>
+      </motion.div>
 
       <motion.div 
         className="contact-locations-section"
